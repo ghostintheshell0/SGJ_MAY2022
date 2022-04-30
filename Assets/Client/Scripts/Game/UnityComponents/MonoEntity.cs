@@ -14,12 +14,13 @@ namespace Game
         {
             World = world;
             Entity = World.NewEntity();
+            ref var t = ref Entity.Get<TransformRef>();
+            t.Value = transform;
+            OnInit();
         }
 
         protected virtual void OnInit()
         {
-            ref var t = ref Entity.Get<TransformRef>();
-            t.Value = transform;
         }
     }
 }

@@ -12,3 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57cf9e2edb4a9948a4c1771cd823e59, type: 3}
   m_Name: StaticData
   m_EditorClassIdentifier: 
+  InputRayDistance: 25
+  RaycastResylts: 3
+  InputLayers:
+    serializedVersion: 2
+    m_Bits: 257
+  InteractiveObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 256

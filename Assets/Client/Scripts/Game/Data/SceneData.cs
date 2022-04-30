@@ -8,6 +8,7 @@ namespace Game
     public class SceneData : MonoBehaviour
     {
         public Camera MainCamera;
+        public Player Player;
 
         public MonoEntity[] Entities;
 

@@ -2,12 +2,12 @@ using Leopotam.Ecs;
 
 namespace Game
 {
-    public class InitSystem : IEcsRunSystem
+    public class InitSystem : IEcsInitSystem
     {
         private readonly SceneData _sceneData = default;
         private readonly EcsWorld _world = default;
     
-        public void Run()
+        public void Init()
         {
             foreach(var monoEntity in _sceneData.Entities)
             {
