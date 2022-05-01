@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 namespace Game
 {
@@ -11,6 +12,8 @@ namespace Game
         public Camera MainCamera;
         public Player Player;
         public Npc Npc;
+        public StepsPool StepsPool;
+        public float FootStepLifeTime;
 
         public GameArea[] GameAreas;
 
@@ -18,6 +21,12 @@ namespace Game
 
         public MonoEntity[] Entities;
 
+        public AudioMixerGroup AudioGroup;
+        public Slider AudioSlider;
+        public AudioSource AudioSource;
+        public AudioClip RespawnClip;
+
+    
         [Button]
         public void Grab()
         {

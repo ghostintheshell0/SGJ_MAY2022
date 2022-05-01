@@ -22,6 +22,7 @@ namespace Game
                     comp.PrePickDuration = cmd.Picker.PrePickDuration;
                     comp.PostPickDuration = cmd.Picker.PrePickDuration + cmd.Picker.PostPickDuration;
                     cmd.Picker.Animator.SetBool(AniamtionNames.Pick, true);
+                    comp.Player.transform.forward = (cmd.Crap.transform.position - cmd.Picker.transform.position).normalized;
                     cmd.Picker.Agent.enabled = false;
                 }
                 
@@ -35,7 +36,7 @@ namespace Game
                 cmd.PrePickDuration -= Time.deltaTime;
                 cmd.PostPickDuration -= Time.deltaTime;
 
-                if(cmd.PrePickDuration <= 0)
+                if(!cmd.Picked  && cmd.PrePickDuration <= 0)
                 {
                     ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
                     player.CurrentCrap = cmd.Target;
@@ -43,6 +44,8 @@ namespace Game
                     cmd.Target.Obstacle.enabled = false;
                     cmd.Target.transform.position = player.View.HandPoint.position;
                     cmd.Target.transform.SetParent(player.View.HandPoint);
+                    player.View.AudioSource.PlayOneShot(cmd.Target.PickClip);
+                    cmd.Picked = true;
                 }
 
                 if(cmd.PostPickDuration <= 0)

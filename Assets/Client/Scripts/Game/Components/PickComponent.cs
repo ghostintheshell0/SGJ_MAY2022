@@ -6,5 +6,6 @@ namespace Game
         public Crap Target;
         public float PrePickDuration;
         public float PostPickDuration;
+        public bool Picked;
     }
 }

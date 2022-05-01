@@ -9,6 +9,7 @@ namespace Game
         public Image SpeechIcon;
         public GameObject SpeechBubble;
         public Animator Animator;
+        public AudioSource AudioSource;
         public float ShowBubbleDuration;
 
         protected override void OnInit()

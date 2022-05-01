@@ -32,6 +32,7 @@ namespace Game
                 .Add(new GameAreaSystem())
                 .Add(new AgentAnimationSystem())
                 .Add(new RespawnSystem())
+                .Add(new FootstepsSystem())
                 .Inject(_sceneData)
                 .Inject(_staticData)
                 .Inject(_runtimeData)

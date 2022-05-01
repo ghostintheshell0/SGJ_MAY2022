@@ -16,6 +16,13 @@ namespace Game
         public float PrePickDuration;
         public float PostPickDuration;
 
+        public float StepsDistance;
+        public float RespawnDuration;
+
+        public Vector3[] StepOffsets;
+
+        public AudioSource AudioSource;
+
 
         protected override void OnInit()
         {

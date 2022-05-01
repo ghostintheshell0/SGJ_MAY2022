@@ -21,6 +21,7 @@ namespace Game
                     player.CurrentCrap = default;
                     cmd.Npc.SpeechBubble.SetActive(false);
                     _runtimeData.Progress++;
+                    cmd.Npc.AudioSource.Play();
                 }
                 
                 if(_runtimeData.Progress < _staticData.AllCrap.Length)

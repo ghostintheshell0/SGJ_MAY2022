@@ -8,6 +8,7 @@ namespace Game
     {
         public Collider Collider;
         public NavMeshObstacle Obstacle;
+        public AudioClip PickClip;
 
         protected override void OnInit()
         {

@@ -14,11 +14,12 @@ namespace Game
             {
                 ref var cmd = ref _filter.Get1(i);
                 
-                _sceneData.OutGameAreaWarning.DOFade(0, 1).SetDelay(2);
+                _sceneData.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
                 cmd.Player.Agent.Warp(cmd.Player.SpawnPoint.position);
                 cmd.Player.MoveTarget.position = cmd.Player.SpawnPoint.position;
 
                 ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
+                cmd.Player.AudioSource.PlayOneShot(_sceneData.RespawnClip);
 
                 SendCrapBack(player.CurrentCrap);
                 player.CurrentCrap = default;
