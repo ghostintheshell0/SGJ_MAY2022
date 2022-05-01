@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db0d017403493ea8b95ef3fdb1f20b6, type: 3}
+  m_Name: Crap3
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: b91ac06cf794fa933b5cc3fd733a7f17, type: 3}
+  Prefab: {fileID: 4926839227591472985, guid: ec4cd5314935ef67c9dab700662a106d, type: 3}
+  Color: {r: 0.2214756, g: 0.745283, b: 0.47274256, a: 1}

@@ -13,5 +13,8 @@ namespace Game
         public LayerMask InputLayers;
         public LayerMask InteractiveObjectsLayer;
         public LayerMask GroundLayers;
+
+        [Space(20)][Header("Gameplay data")]
+        public  CrapData[] AllCrap;
     }
 }

@@ -7,6 +7,6 @@ namespace Game
     [System.Serializable]
     public class RuntimeData
     {
-    
+        public int Progress;
     }
 }

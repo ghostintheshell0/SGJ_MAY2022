@@ -7,5 +7,6 @@ namespace Game
     {
         public Sprite Icon;
         public Crap Prefab;
+        public Color Color;
     }
 }

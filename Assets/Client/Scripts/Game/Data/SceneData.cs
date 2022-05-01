@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -9,6 +10,11 @@ namespace Game
     {
         public Camera MainCamera;
         public Player Player;
+        public Npc Npc;
+
+        public GameArea[] GameAreas;
+
+        public Image OutGameAreaWarning;
 
         public MonoEntity[] Entities;
 
@@ -18,4 +24,5 @@ namespace Game
             Entities = GameObject.FindObjectsOfType<MonoEntity>();
         }
     }
+
 }

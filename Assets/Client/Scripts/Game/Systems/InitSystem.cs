@@ -13,6 +13,10 @@ namespace Game
             {
                 monoEntity.Init(_world);
             }
+            
+            ref var lookAt = ref _sceneData.Npc.Entity.Get<LookAtCameraComponent>();
+            lookAt.Camera = _sceneData.MainCamera;
+            lookAt.Transform = _sceneData.Npc.SpeechBubble.transform;
         }
     }
 }

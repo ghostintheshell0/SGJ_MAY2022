@@ -8,6 +8,13 @@ namespace Game
     {
         public Image SpeechIcon;
         public GameObject SpeechBubble;
+        public Animator Animator;
+        public float ShowBubbleDuration;
+
+        protected override void OnInit()
+        {
+
+        }
         
         private void OnTriggerEnter(Collider other)
         {

@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 7178117374467222347}
   - component: {fileID: 7646855083601222530}
   - component: {fileID: 8233206508429038987}
+  - component: {fileID: 5667234699396457816}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -178,7 +179,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -202,7 +203,11 @@ MonoBehaviour:
   Agent: {fileID: 7178117374467222347}
   MoveTarget: {fileID: 0}
   HandPoint: {fileID: 6895597491128391124}
+  Animator: {fileID: 5667234699396457816}
+  SpawnPoint: {fileID: 0}
   PickDistance: 2
+  PrePickDuration: 0.6
+  PostPickDuration: 0.5
 --- !u!54 &8233206508429038987
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,3 +224,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &5667234699396457816
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195891235145243516}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e268d8076d787bab88862ed9f5f4c8c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

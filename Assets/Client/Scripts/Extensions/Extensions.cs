@@ -85,7 +85,7 @@ namespace Extensions
 
     public static class SpriteRendererExtensions
     {
-        public static void SetAlpha(SpriteRenderer r, float alpha)
+        public static void SetAlpha(this SpriteRenderer r, float alpha)
         {
             var c = r.color;
             c.a = alpha;
@@ -95,7 +95,7 @@ namespace Extensions
 
     public static class ImageExtensions
     {
-        public static void SetAlpha(Image image, float alpha)
+        public static void SetAlpha(this Image image, float alpha)
         {
             var c = image.color;
             c.a = alpha;

@@ -23,3 +23,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 256
+  AllCrap:
+  - {fileID: 11400000, guid: 56345799617f8c388835b6eecfdceab3, type: 2}
+  - {fileID: 11400000, guid: d4e54c3c34abba7a2bc6fc3c99d74d05, type: 2}
+  - {fileID: 11400000, guid: 475bfb3d82b745adaa54543f01decf04, type: 2}

@@ -22,10 +22,16 @@ namespace Game
 #endif
             _systems
                 .Add(new InitSystem())
+                .Add(new SpawnCrapSystem())
                 .Add(new RaycastsSystem())
                 .Add(new PlayerInputSystem())
                 .Add(new PickCrapSystem())
                 .Add(new EnterNpcSystem())
+                .Add(new HideObjectWithDelaySystem())
+                .Add(new LookAtCameraSystem())
+                .Add(new GameAreaSystem())
+                .Add(new AgentAnimationSystem())
+                .Add(new RespawnSystem())
                 .Inject(_sceneData)
                 .Inject(_staticData)
                 .Inject(_runtimeData)

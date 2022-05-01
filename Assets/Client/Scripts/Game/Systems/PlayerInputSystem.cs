@@ -27,14 +27,10 @@ namespace Game
                             cmd.Crap = crapComp.View;
                             return;
                         }
-                    //    else
-                    //    {
-                    //        Debug.Log((player.transform.position - hit.point).magnitude);
-                    //    }
                     }
                 }
 
-                MoveTo();
+                MoveTo(_sceneData.Player);
                
             }
         }
@@ -58,8 +54,13 @@ namespace Game
             return false;
         }
 
-        private void MoveTo()
+        private void MoveTo(Player player)
         {
+            if(player.Agent.enabled == false)
+            {
+                return;
+            }
+
             foreach(var i in _raycasts)
             {
                 ref var hit = ref _raycasts.Get1(i).Hit;
@@ -67,8 +68,8 @@ namespace Game
                 if(_staticData.GroundLayers.Contains(hit.collider.gameObject.layer))
                 {
                     var worldPos = hit.point;
-                    _sceneData.Player.MoveTarget.position = worldPos;
-                    _sceneData.Player.Agent.SetDestination(worldPos);
+                    player.MoveTarget.position = worldPos;
+                    player.Agent.SetDestination(worldPos);
                     return;
                 }
             }
