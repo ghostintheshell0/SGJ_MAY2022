@@ -42,6 +42,14 @@ namespace Extensions
         }
     }
 
+    public static class ArrayExtensions
+    {
+        public static T GetRandom<T>(this T[] array)
+        {
+            return array[Random.Range(0, array.Length)];
+        }
+    }
+
     public static class TransformExtensions
     {
         public static bool IsNear(this Transform t, Transform target, float distance)

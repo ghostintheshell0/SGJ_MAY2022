@@ -9,6 +9,7 @@ namespace Game
         public House House;
         public Player Player;
         public CinemachineVirtualCamera CutSceneCamera;
+        public CinemachineVirtualCamera CutSceneCamera2;
         public Npc Npc;
         public Transform HousePoint;
         public Animator HouseAnimator;
@@ -19,7 +20,7 @@ namespace Game
 
         public Transform Traktor;
         public float HeightDuration;
-        public Transform TargetHeight;
+        public float TraktorHeight;
         public float TraktorSpeed;
         public Rigidbody TraktorBody;
 
@@ -28,5 +29,19 @@ namespace Game
         public float ThirtdPartDuration;
         public float FourthPartDuration;
         public float FifthPartDuration;
+
+        public float Camera1BlendDuration;
+        public float Camera2BlendDuration;
+
+        public float TraktorFlyAngle;
+        public float TraktorFlyAngleDuration;
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            var height = Traktor.position;
+            height.y += TraktorHeight;
+            Gizmos.DrawLine(Traktor.position, height);
+        }
     }
 }

@@ -7,6 +7,7 @@ namespace Game
     {
         private readonly SceneData _sceneData = default;
         private readonly EcsWorld _world = default;
+        private readonly UI _ui = default;
 
         private string volumeValueName = "MasterVolume";
     
@@ -24,8 +25,8 @@ namespace Game
             
             if(_sceneData.AudioGroup.audioMixer.GetFloat(volumeValueName, out var volume))
             {
-                _sceneData.AudioSlider.value = volume;
-                _sceneData.AudioSlider.onValueChanged.AddListener(ChangeAudio);
+                _ui.AudioSlider.value = volume;
+                _ui.AudioSlider.onValueChanged.AddListener(ChangeAudio);
             }
             else
             {

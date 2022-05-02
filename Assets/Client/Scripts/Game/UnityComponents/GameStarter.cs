@@ -6,6 +6,7 @@ namespace Game
     public class GameStarter : MonoBehaviour
     {
         public SceneData _sceneData = default;
+        public UI _ui = default;
         public StaticData _staticData = default;
         public RuntimeData _runtimeData = default;
 
@@ -38,6 +39,7 @@ namespace Game
                 .Inject(_sceneData)
                 .Inject(_staticData)
                 .Inject(_runtimeData)
+                .Inject(_ui)
                 .Init();
         }
 

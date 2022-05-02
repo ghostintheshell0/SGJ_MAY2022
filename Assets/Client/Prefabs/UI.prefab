@@ -238,15 +238,15 @@ MonoBehaviour:
 
     PandaWillTouchYou'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a05387b6b0f1ee27b16fb5634f2c96e, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 9a05387b6b0f1ee27b16fb5634f2c96e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284966759
-  m_fontColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 3896971400918026809}
   - component: {fileID: 3896971400918026814}
   - component: {fileID: 3896971400918026815}
+  - component: {fileID: 54018741}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -476,7 +477,7 @@ RectTransform:
   - {fileID: 3896971402660298383}
   - {fileID: 3896971400798714464}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -545,6 +546,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &54018741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896971400918026812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7c86be9f8ef864818531f4cb3d5c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FinalCutScene: {fileID: 0}
+  AudioSlider: {fileID: 3896971402535267285}
+  EndGameScreenFadeDuration: 2.5
+  EndGameScreen: {fileID: 3896971400798714477}
+  OutGameAreaWarning: {fileID: 3896971401693341709}
+  Developers: {fileID: 3896971400824327177}
+  DevelopersVariations:
+  - Diccuric_Sigeon<br>&<br>PandaWillTouchYou
+  - PandaWillTouchYou<br>&<br>Diccuric_Sigeon
 --- !u!1 &3896971401071036860
 GameObject:
   m_ObjectHideFlags: 0

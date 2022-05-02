@@ -8,6 +8,7 @@ namespace Game
     {
         private readonly EcsFilter<RespawnCommand> _filter = default;
         private readonly SceneData _sceneData = default;
+        private readonly UI _ui = default;
     
         public void Run()
         {
@@ -27,7 +28,7 @@ namespace Game
                 }
                 else
                 {
-                     _sceneData.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
+                     _ui.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
                     cmd.Player.Agent.Warp(cmd.Player.SpawnPoint.position);
                     cmd.Player.MoveTarget.position = cmd.Player.SpawnPoint.position;
 

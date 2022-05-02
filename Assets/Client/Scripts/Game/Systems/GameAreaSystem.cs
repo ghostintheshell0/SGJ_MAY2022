@@ -6,6 +6,7 @@ namespace Game
     public class GameAreaSystem : IEcsRunSystem
     {
         private readonly SceneData _sceneData = default;
+        private readonly UI _ui = default;
     
         public void Run()
         {
@@ -19,7 +20,7 @@ namespace Game
 
             var endDistance = nearArea.WarningRadius;
             var warningPercent = (distance - nearArea.SafeRadius) / endDistance;
-            _sceneData.OutGameAreaWarning.SetAlpha(warningPercent);
+            _ui.OutGameAreaWarning.SetAlpha(warningPercent);
 
             if(warningPercent > 1f)
             {
