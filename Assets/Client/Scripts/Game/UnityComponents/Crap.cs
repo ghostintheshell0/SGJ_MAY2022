@@ -9,6 +9,7 @@ namespace Game
         public Collider Collider;
         public NavMeshObstacle Obstacle;
         public AudioClip PickClip;
+        public CrapData Data {get; set;}
 
         protected override void OnInit()
         {

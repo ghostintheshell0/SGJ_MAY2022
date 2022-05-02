@@ -17,16 +17,19 @@ namespace Game
                 ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
                 if(player.CurrentCrap != default)
                 {
+                    player.CurrentCrap.Entity.Destroy();
                     UnityEngine.Object.Destroy(player.CurrentCrap.gameObject);
                     player.CurrentCrap = default;
                     cmd.Npc.SpeechBubble.SetActive(false);
                     _runtimeData.Progress++;
                     cmd.Npc.AudioSource.Play();
+                    player.View.Entity.Get<RespawnCrapCommand>();
                 }
                 
                 if(_runtimeData.Progress < _staticData.AllCrap.Length)
                 {
                     ShowBubble(cmd.Npc);
+                    player.View.Entity.Get<UpdateProgressComponent>();
                 }
                 
                 _filter.GetEntity(i).Del<EnterNpcCommand>();

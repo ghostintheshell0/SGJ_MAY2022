@@ -17,8 +17,8 @@ namespace Game
                 monoEntity.Init(_world);
             }
             
-            ref var lookAt = ref _sceneData.Npc.Entity.Get<LookAtCameraComponent>();
-            lookAt.Camera = _sceneData.MainCamera;
+            ref var lookAt = ref _world.NewEntity().Get<LookAtComponent>();
+            lookAt.Target = _sceneData.MainCamera.transform;
             lookAt.Transform = _sceneData.Npc.SpeechBubble.transform;
            
             
@@ -31,6 +31,7 @@ namespace Game
             {
                 Debug.LogWarning($"AudioMixer param {volumeValueName} not found");
             }
+
         }
 
         private void ChangeAudio(float value)

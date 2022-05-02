@@ -16,5 +16,6 @@ namespace Game
 
         [Space(20)][Header("Gameplay data")]
         public  CrapData[] AllCrap;
+        public bool RespawnCrap;
     }
 }

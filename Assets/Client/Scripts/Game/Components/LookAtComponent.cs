@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Game
 {
-    public struct LookAtCameraComponent
+    public struct LookAtComponent
     {
-        public Camera Camera;
+        public Transform Target;
         public Transform Transform;
     }
 }

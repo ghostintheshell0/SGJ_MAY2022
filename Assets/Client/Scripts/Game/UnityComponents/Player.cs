@@ -16,12 +16,7 @@ namespace Game
         public float PrePickDuration;
         public float PostPickDuration;
 
-        public float StepsDistance;
         public float RespawnDuration;
-        public ParticleSystem[] Steps;
-
-        public Vector3[] StepOffsets;
-
         public AudioSource AudioSource;
 
 
