@@ -24,6 +24,8 @@ namespace Game
         public AudioSource AudioSource;
         public AudioClip RespawnClip;
 
+        public FinalCutScene FinalCutScene;
+
     
         [Button]
         public void Grab()

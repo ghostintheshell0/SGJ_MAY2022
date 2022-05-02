@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public class SpawnCrapSystem : IEcsInitSystem
+    public class SpawnCrapSystem : IEcsInitSystem, IEcsRunSystem
     {
         private readonly EcsFilter<CrapSpawnerComponent> _filter = default;
         private readonly EcsFilter<RespawnCrapCommand> _respawns = default;
@@ -25,6 +25,11 @@ namespace Game
                 crapComponent.Spawner = cmd.View;
             }
 
+            _world.NewEntity().Get<UpdateProgressComponent>();
+        }
+
+        public void Run()
+        {
             if(!_respawns.IsEmpty())
             {
                 foreach(var i in _respawns)
@@ -32,17 +37,16 @@ namespace Game
                     _respawns.GetEntity(i).Del<RespawnCrapCommand>();
                 }
 
-                if(_staticData.RespawnCrap)
+                foreach(var i in _craps)
                 {
-                    foreach(var i in _craps)
+                    ref var crap = ref _craps.Get1(i);
+                    if(_staticData.RespawnCrap)
                     {
-                        ref var crap = ref _craps.Get1(i);
                         crap.View.transform.position = crap.Spawner.GetSpawnPoint();
                     }
                 }
             }
 
-            _world.NewEntity().Get<UpdateProgressComponent>();
         }
     }
 }

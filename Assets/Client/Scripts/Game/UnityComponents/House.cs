@@ -5,6 +5,7 @@ namespace Game
     public class House : MonoEntity
     {
         public Renderer RoofRenderer;
+        public Collider Trigger;
         
         private void OnTriggerEnter(Collider collider)
         {
