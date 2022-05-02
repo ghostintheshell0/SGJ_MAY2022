@@ -18,6 +18,7 @@ namespace Game
 
         public float StepsDistance;
         public float RespawnDuration;
+        public ParticleSystem[] Steps;
 
         public Vector3[] StepOffsets;
 

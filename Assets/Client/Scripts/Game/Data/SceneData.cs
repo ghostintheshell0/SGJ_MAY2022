@@ -12,8 +12,6 @@ namespace Game
         public Camera MainCamera;
         public Player Player;
         public Npc Npc;
-        public StepsPool StepsPool;
-        public float FootStepLifeTime;
 
         public GameArea[] GameAreas;
 

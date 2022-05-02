@@ -20,15 +20,6 @@ namespace Game
             ref var lookAt = ref _sceneData.Npc.Entity.Get<LookAtCameraComponent>();
             lookAt.Camera = _sceneData.MainCamera;
             lookAt.Transform = _sceneData.Npc.SpeechBubble.transform;
-
-            ref var steps = ref _sceneData.Player.Entity.Get<FootstepsSpawnerComponent>();
-            steps.Spawner = _sceneData.Player.transform;
-            steps.StepLifeTime = _sceneData.FootStepLifeTime;
-            steps.LastPosition = _sceneData.Player.transform.position;
-            steps.MinDistance = _sceneData.Player.StepsDistance;
-            steps.StepsPool = _sceneData.StepsPool;
-            steps.StepOffsets = _sceneData.Player.StepOffsets;
-
            
             
             if(_sceneData.AudioGroup.audioMixer.GetFloat(volumeValueName, out var volume))
