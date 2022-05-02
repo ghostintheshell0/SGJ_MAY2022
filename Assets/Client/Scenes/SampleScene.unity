@@ -2465,10 +2465,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 438468485}
     - target: {fileID: 2400147914974423375, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
-      propertyPath: TraktorSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2400147914974423375, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
       propertyPath: HouseAnimator
       value: 
       objectReference: {fileID: 1623617558}
