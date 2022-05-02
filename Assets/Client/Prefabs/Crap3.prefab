@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crap3
       objectReference: {fileID: 0}
+    - target: {fileID: 6089661416306829636, guid: 75e327bffc70eba9ca47b9244cb766a9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4839512561013413595, guid: e31e7c112e1b21e1eae9c37360a78ab3, type: 3}
     - target: {fileID: 6089661416306829637, guid: 75e327bffc70eba9ca47b9244cb766a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

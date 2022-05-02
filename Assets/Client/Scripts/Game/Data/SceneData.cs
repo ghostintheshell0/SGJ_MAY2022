@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -26,12 +25,34 @@ namespace Game
 
         public FinalCutScene FinalCutScene;
 
+        public float EndGameScreenFadeDuration;
+        public CanvasGroup EndGameScreen;
+
     
         [Button]
         public void Grab()
         {
             Entities = GameObject.FindObjectsOfType<MonoEntity>();
         }
+
+        public void Restart()
+        {
+            SceneManager.LoadScene(gameObject.scene.name);
+        }
     }
 
+    [System.Serializable]
+    public struct VisualSettings
+    {
+        public Vector3 DirectionalLightRotation;
+        public float DirectionalLightIntencity;
+        public Color DirectionLightColor;
+        public float DirectionalLightDuration;
+
+
+        public float VignetteIntensity;
+
+        public float PrticlesCount;
+
+    }
 }
