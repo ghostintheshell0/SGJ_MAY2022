@@ -15,6 +15,8 @@ namespace Game
         public float ShowBubbleDuration;
         public NavMeshObstacle Obstacle;
         public NavMeshAgent Agent;
+        public float LookRadius;
+        public float DelayForDancing;
 
         protected override void OnInit()
         {
@@ -26,6 +28,10 @@ namespace Game
             ref var animatedAgent = ref Entity.Get<AnimatedAgentComponent>();
             animatedAgent.Agent = Agent;
             animatedAgent.Animator = Animator;
+
+            ref var dancing = ref Entity.Get<EasterDancingComponent>();
+            dancing.Npc = this;
+            dancing.Delay = DelayForDancing;
         }
         
         private void OnTriggerEnter(Collider other)
@@ -50,6 +56,12 @@ namespace Game
             {
                 Entity.Del<LookAtComponent>();
             }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, LookRadius);
         }
     }
 }

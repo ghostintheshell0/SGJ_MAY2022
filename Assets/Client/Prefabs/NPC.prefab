@@ -180,6 +180,8 @@ MonoBehaviour:
   ShowBubbleDuration: 5
   Obstacle: {fileID: 4936575408134962828}
   Agent: {fileID: 3539550981071968234}
+  LookRadius: 20
+  DelayForDancing: 8
 --- !u!82 &5168302261903179095
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Leopotam.Ecs;
+using UnityEngine;
 
 namespace Game
 {
@@ -14,17 +15,33 @@ namespace Game
             {
                 ref var cmd = ref _filter.Get1(i);
                 
-                _sceneData.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
-                cmd.Player.Agent.Warp(cmd.Player.SpawnPoint.position);
-                cmd.Player.MoveTarget.position = cmd.Player.SpawnPoint.position;
+                if(cmd.Inited)
+                {
+                    cmd.Delay -= Time.deltaTime;
+                
+                    if(cmd.Delay < 0)
+                    {
+                        cmd.Player.Entity.Del<LockInputComponent>();
+                        _filter.GetEntity(i).Del<RespawnCommand>();
+                    }
+                }
+                else
+                {
+                     _sceneData.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
+                    cmd.Player.Agent.Warp(cmd.Player.SpawnPoint.position);
+                    cmd.Player.MoveTarget.position = cmd.Player.SpawnPoint.position;
 
-                ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
-                cmd.Player.AudioSource.PlayOneShot(_sceneData.RespawnClip);
+                    ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
+                    cmd.Player.AudioSource.PlayOneShot(_sceneData.RespawnClip);
 
-                SendCrapBack(player.CurrentCrap);
-                player.CurrentCrap = default;
+                    SendCrapBack(player.CurrentCrap);
+                    player.CurrentCrap = default;
+                    cmd.Delay = cmd.Player.RespawnDuration;
+                    cmd.Player.Entity.Get<LockInputComponent>();
+                    cmd.Inited = true;
+                }
+               
 
-                _filter.GetEntity(i).Del<RespawnCommand>();
             }
         }
 

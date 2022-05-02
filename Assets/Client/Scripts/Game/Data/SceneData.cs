@@ -4,6 +4,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -26,11 +27,19 @@ namespace Game
 
         public FinalCutScene FinalCutScene;
 
+        public float EndGameScreenFadeDuration;
+        public CanvasGroup EndGameScreen;
+
     
         [Button]
         public void Grab()
         {
             Entities = GameObject.FindObjectsOfType<MonoEntity>();
+        }
+
+        public void Restart()
+        {
+            SceneManager.LoadScene(gameObject.scene.name);
         }
     }
 
