@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,4 +41,18 @@ namespace Game
         }
     }
 
+    [System.Serializable]
+    public struct VisualSettings
+    {
+        public Vector3 DirectionalLightRotation;
+        public float DirectionalLightIntencity;
+        public Color DirectionLightColor;
+        public float DirectionalLightDuration;
+
+
+        public float VignetteIntensity;
+
+        public float PrticlesCount;
+
+    }
 }
