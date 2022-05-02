@@ -67,7 +67,7 @@ namespace Game
         public void Run()
         {
             #if UNITY_EDITOR
-            if(Input.GetKeyDown(KeyCode.O))
+            if(Input.GetKeyDown(_sceneData.FinalCutScene.DebugKey))
             {
                 _world.NewEntity().Get<FinalCutsceneComponent>();
             }
@@ -91,7 +91,7 @@ namespace Game
                     cmd.FirstStep = true;
                     cmd.Delay = cutsceneData.FirstPartDuration;
                     cutsceneData.Sun.DORotate(cutsceneData.SunRotation, cutsceneData.SunRotationDuration);
-                    
+                    _world.NewEntity().Get<LockInputComponent>();
                     continue;
                 }
 

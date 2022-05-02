@@ -9,9 +9,12 @@ namespace Game
         private readonly SceneData _sceneData = default;
         private readonly StaticData _staticData = default;
         private readonly EcsFilter<RaycastComponent> _raycasts = default;
+        private readonly EcsFilter<LockInputComponent> _locks = default;
     
         public void Run()
         {
+            if(!_locks.IsEmpty()) return;
+            
             if(Input.GetMouseButton(0))
             {
                 if(TryGetInteractiveObject(out var interactiveObject, out var hit))

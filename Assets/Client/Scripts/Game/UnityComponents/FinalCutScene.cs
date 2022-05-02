@@ -5,6 +5,7 @@ namespace Game
 {
     public class FinalCutScene : MonoEntity
     {
+        public KeyCode DebugKey;
         public House House;
         public Player Player;
         public CinemachineVirtualCamera CutSceneCamera;

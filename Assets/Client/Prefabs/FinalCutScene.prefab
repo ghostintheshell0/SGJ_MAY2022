@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f2b303bf7e0b7dc8b3a61872dde37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugKey: 111
   House: {fileID: 0}
   Player: {fileID: 0}
   CutSceneCamera: {fileID: 2400147914540713140}
@@ -185,7 +186,7 @@ MonoBehaviour:
   Traktor: {fileID: 0}
   HeightDuration: 3
   TargetHeight: {fileID: 0}
-  TraktorSpeed: 5
+  TraktorSpeed: 6
   TraktorBody: {fileID: 0}
   FirstPartDuration: 2.5
   SecondPartDuration: 5.5

@@ -7,6 +7,7 @@ namespace Game
         private readonly EcsFilter<EnterNpcCommand> _filter = default;
         private readonly RuntimeData _runtimeData = default;
         private readonly StaticData _staticData = default;
+        private readonly EcsWorld _world = default;
     
         public void Run()
         {
@@ -31,6 +32,11 @@ namespace Game
                     ShowBubble(cmd.Npc);
                     player.View.Entity.Get<UpdateProgressComponent>();
                 }
+                else
+                {
+                    var ent = _world.NewEntity();
+                    ent.Get<FinalCutsceneComponent>();
+                }
                 
                 _filter.GetEntity(i).Del<EnterNpcCommand>();
             }
@@ -47,5 +53,4 @@ namespace Game
             showBubble.Delay = npc.ShowBubbleDuration;
         }
     }
-
 }
