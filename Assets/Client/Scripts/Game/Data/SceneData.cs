@@ -3,30 +3,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 namespace Game
 {
     public class SceneData : MonoBehaviour
     {
         public Camera MainCamera;
+        public CinemachineBrain CinemachineBrain;
+        public CinemachineVirtualCamera CinemachineCamera;
         public Player Player;
         public Npc Npc;
 
         public GameArea[] GameAreas;
 
-        public Image OutGameAreaWarning;
-
         public MonoEntity[] Entities;
 
         public AudioMixerGroup AudioGroup;
-        public Slider AudioSlider;
         public AudioSource AudioSource;
         public AudioClip RespawnClip;
 
-        public FinalCutScene FinalCutScene;
-
-        public float EndGameScreenFadeDuration;
-        public CanvasGroup EndGameScreen;
 
     
         [Button]
