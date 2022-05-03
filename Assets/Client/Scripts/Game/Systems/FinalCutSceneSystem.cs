@@ -42,7 +42,7 @@ namespace Game
                 {
                     if(cmd.FirstStep == false)
                     {
-                        
+                        cmd.FirstStep = true;
                         _ui.ChangeSceneFade.DOFade(0, _ui.ChangeSceneFadeDuration * 3);
                         cutsceneData.CutSceneCamera.enabled = true;
                         cmd.Delay = cutsceneData.FirstPartDuration;
@@ -86,6 +86,7 @@ namespace Game
                         var angle = cutsceneData.Traktor.rotation.eulerAngles;
                         angle.x += cutsceneData.TraktorFlyAngle;
                         cutsceneData.Traktor.DORotate(angle, cutsceneData.TraktorFlyAngleDuration);
+                        cutsceneData.CutSceneCamera4.enabled = true;
                         continue;
                     }
                     else

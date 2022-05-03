@@ -7,6 +7,7 @@ namespace Game
     public class RespawnSystem : IEcsRunSystem
     {
         private readonly EcsFilter<RespawnCommand> _filter = default;
+        private readonly EcsFilter<CrapSpawnerComponent> _spawners = default;
         private readonly SceneData _sceneData = default;
         private readonly UI _ui = default;
     
@@ -36,8 +37,8 @@ namespace Game
                     ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
                     cmd.Player.AudioSource.PlayOneShot(_sceneData.RespawnClip);
 
-                    SendCrapBack(player.CurrentCrap);
-                    player.CurrentCrap = default;
+                    SendCrapBack(player.View.CurrentCrap);
+                    player.View.CurrentCrap = default;
                     cmd.Delay = cmd.Player.RespawnDuration;
                     cmd.Player.Entity.Get<LockInputComponent>();
                     cmd.Inited = true;
@@ -54,9 +55,27 @@ namespace Game
                 crap.transform.SetParent(default);
                 crap.Collider.enabled = true;
                 crap.Obstacle.enabled = true;
-                ref var crapComp = ref crap.Entity.Get<CrapComponent>();
-                crap.transform.position = crapComp.Spawner.GetSpawnPoint();
+                var spawner = GetSpawner(crap.Data);
+                if(spawner != default)
+                {
+                    crap.transform.position = spawner.GetSpawnPoint();
+                }
+                
             }
+        }
+
+        private SpawnCrapArea GetSpawner(CrapData crapData)
+        {
+            foreach(var i in _spawners)
+            {
+                ref var s = ref _spawners.Get1(i);
+                if(s.View.Crap.name == crapData.name)
+                {
+                    return s.View;
+                }
+            }
+
+            return default;
         }
     }
 }

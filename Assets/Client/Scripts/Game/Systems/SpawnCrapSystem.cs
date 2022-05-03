@@ -9,6 +9,7 @@ namespace Game
         private readonly EcsFilter<RespawnCrapCommand> _respawns = default;
         private readonly EcsFilter<CrapComponent> _craps = default;
         private readonly StaticData _staticData = default;
+        private readonly SceneData _sceneData = default;
         private readonly EcsWorld _world = default;
         private readonly RuntimeData _runtimeData = default;
     
@@ -20,6 +21,7 @@ namespace Game
                 var index = _staticData.AllCrap.IndexOf(cmd.View.Crap);
                 if(index < _runtimeData.Progress) continue;
 
+                if(_sceneData.Player.CurrentCrap != default && _sceneData.Player.CurrentCrap.Data.name == cmd.View.Crap.name) continue;
                 var prefab = cmd.View.Crap.Prefab;
                 var pos = cmd.View.GetSpawnPoint(); 
                 var crap = UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
@@ -46,6 +48,7 @@ namespace Game
                     ref var crap = ref _craps.Get1(i);
                     if(_staticData.RespawnCrap)
                     {
+                        if(_sceneData.Player.CurrentCrap != default && _sceneData.Player.CurrentCrap.Data.name == crap.View.Data.name) continue;
                         crap.View.transform.position = crap.Spawner.GetSpawnPoint();
                     }
                 }

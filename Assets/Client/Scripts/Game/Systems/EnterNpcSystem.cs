@@ -17,10 +17,10 @@ namespace Game
                 ref var cmd = ref _filter.Get1(i);
 
                 ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
-                if(player.CurrentCrap != default)
+                if(player.View.CurrentCrap != default)
                 {
-                    var crap = player.CurrentCrap;
-                    player.CurrentCrap = default;
+                    var crap = player.View.CurrentCrap;
+                    player.View.CurrentCrap = default;
                     cmd.Npc.SpeechBubble.SetActive(false);
                     _runtimeData.Progress++;
                     cmd.Npc.AudioSource.Play();
@@ -41,7 +41,11 @@ namespace Game
                     }
                     else
                     {
-                        crap.Entity.Destroy();
+                        if(crap.Entity.IsAlive())
+                        {
+                            crap.Entity.Destroy();
+                        }
+                        
                         UnityEngine.Object.Destroy(crap.gameObject);
                     }
                    
@@ -60,7 +64,6 @@ namespace Game
                     changeScene.SceneName = _staticData.MainScene;
                     changeScene.Player = player.View;
                     changeScene.MovePoint = player.View.transform;
-                    ent.Get<FinalCutsceneComponent>();
                 }
                 
                 _filter.GetEntity(i).Del<EnterNpcCommand>();

@@ -100,13 +100,12 @@ namespace Game
             {
                 Service<RuntimeData>.Set(_runtimeData);
                 _runtimeData.IsNewGame = true;
-                _sceneData.House.IsLocked = true;
             }
             else
             {
                 _runtimeData = runtimeData;
                 _sceneData.Npc.gameObject.SetActive(_sceneData.ShowNPC);
-                _sceneData.House.IsLocked = _runtimeData.Progress > 0;
+                _sceneData.House.IsLocked = _runtimeData.Progress == 0;
             }
 
 
@@ -133,6 +132,7 @@ namespace Game
                 _runtimeData.IsNewGame = false;
                 _runtimeData.IsEnd = false;
                 _runtimeData.Progress = 0;
+                _sceneData.House.IsLocked = true;
             }
             
         }

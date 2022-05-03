@@ -17,6 +17,7 @@ namespace Game
 
         public float RespawnDuration;
         public AudioSource AudioSource;
+        public Crap CurrentCrap {get; set;}
 
 
         protected override void OnInit()

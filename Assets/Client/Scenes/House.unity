@@ -236,6 +236,7 @@ MonoBehaviour:
   FollowCamera: 0
   EnableFootsteps: 0
   EnableWind: 0
+  ShowNPC: 1
 --- !u!114 &60167199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +799,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.304, y: 1}
+    m_SensorSize: {x: 1.6342592, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

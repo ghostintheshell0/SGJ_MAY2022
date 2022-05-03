@@ -23,17 +23,13 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 256
-  MainScene: 
+  MainScene: SampleScene
   AllCrap:
   - {fileID: 11400000, guid: 56345799617f8c388835b6eecfdceab3, type: 2}
   - {fileID: 11400000, guid: d4e54c3c34abba7a2bc6fc3c99d74d05, type: 2}
   - {fileID: 11400000, guid: 475bfb3d82b745adaa54543f01decf04, type: 2}
-  - {fileID: 11400000, guid: 150d1479644e884f2940812195098dac, type: 2}
-  - {fileID: 11400000, guid: 84fd9ed16c49970bbabecbb1e4688832, type: 2}
-  - {fileID: 11400000, guid: 3ade90227686bcf43838b026d3d0c0e2, type: 2}
-  - {fileID: 11400000, guid: 989273e8642193ca29134e607cfa91c2, type: 2}
   RespawnCrap: 1
-  IgnoreTriggersAfterSpawnTime: 0
+  IgnoreTriggersAfterSpawnTime: 1
   AudioManagerPrefab: {fileID: 1443227420653966194, guid: b83528d6f52feb7908baba10dea25d69, type: 3}
   UIPrefab: {fileID: 54018741, guid: 536c7c5ded242b73b998571c2fbd0dc3, type: 3}
   PlayerPrefab: {fileID: 7646855083601222530, guid: 6c102a81f14c00d759a43537322e12f8, type: 3}
