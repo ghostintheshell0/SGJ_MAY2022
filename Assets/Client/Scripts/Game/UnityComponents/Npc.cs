@@ -34,6 +34,10 @@ namespace Game
             ref var dancing = ref Entity.Get<EasterDancingComponent>();
             dancing.Npc = this;
             dancing.Delay = DelayForDancing;
+
+            ref var follow = ref World.NewEntity().Get<FollowComponent>();
+            follow.Target = this.transform;
+            follow.Follower = SpeechBubble.transform;
         }
         
         private void OnTriggerEnter(Collider other)

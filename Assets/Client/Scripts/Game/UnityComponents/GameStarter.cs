@@ -76,9 +76,25 @@ namespace Game
 
         private void InitServices()
         {
-
-
             Service<StaticData>.Set(_staticData);
+
+            var audioManager = Service<AudioManager>.Get();
+            if(audioManager == default)
+            {
+                audioManager = Instantiate(_staticData.AudioManagerPrefab);
+                DontDestroyOnLoad(audioManager);
+                Service<AudioManager>.Set(audioManager);
+            }
+
+
+            var ui = Service<UI>.Get();
+            if(ui == default)
+            {
+                ui = Instantiate(_staticData.UIPrefab);
+                DontDestroyOnLoad(ui);
+                Service<UI>.Set(ui);
+            }
+
             var runtimeData = Service<RuntimeData>.Get();
             if(runtimeData == default)
             {
@@ -91,23 +107,6 @@ namespace Game
                 _runtimeData = runtimeData;
                 _sceneData.Npc.gameObject.SetActive(_sceneData.ShowNPC);
                 _sceneData.House.IsLocked = _runtimeData.Progress > 0;
-            }
-
-
-            var audioManager = Service<AudioManager>.Get();
-            if(audioManager == default)
-            {
-                audioManager = Instantiate(_staticData.AudioManagerPrefab);
-                DontDestroyOnLoad(audioManager);
-                Service<AudioManager>.Set(audioManager);
-            }
-
-            var ui = Service<UI>.Get();
-            if(ui == default)
-            {
-                ui = Instantiate(_staticData.UIPrefab);
-                DontDestroyOnLoad(ui);
-                Service<UI>.Set(ui);
             }
 
 
@@ -135,6 +134,7 @@ namespace Game
                 _runtimeData.IsEnd = false;
                 _runtimeData.Progress = 0;
             }
+            
         }
 
         private void EndGame()
