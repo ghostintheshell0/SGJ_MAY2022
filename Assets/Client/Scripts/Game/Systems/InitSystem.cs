@@ -37,7 +37,6 @@ namespace Game
                 Debug.LogWarning($"AudioMixer param {volumeValueName} not found");
             }
 
-            _ui.RestartButton.onClick.AddListener(_sceneData.Restart);
 
             _ui.ChangeSceneFade.SetAlpha(1);
             _ui.ChangeSceneFade.DOFade(0f, _ui.ChangeSceneFadeDuration);

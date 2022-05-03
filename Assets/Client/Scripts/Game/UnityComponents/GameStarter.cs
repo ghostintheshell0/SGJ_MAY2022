@@ -89,7 +89,7 @@ namespace Game
             else
             {
                 _runtimeData = runtimeData;
-                _sceneData.Npc.gameObject.SetActive(false);
+                _sceneData.Npc.gameObject.SetActive(_sceneData.ShowNPC);
                 _sceneData.House.IsLocked = _runtimeData.Progress > 0;
             }
 
@@ -109,6 +109,7 @@ namespace Game
                 DontDestroyOnLoad(ui);
                 Service<UI>.Set(ui);
             }
+
 
             var player = Service<Player>.Get();
             if(player == default)
@@ -131,7 +132,7 @@ namespace Game
                 ui.EndGameScreen.alpha = 0;
                 ui.EndGameScreen.gameObject.SetActive(false);
                 _runtimeData.IsNewGame = false;
-            //    _runtimeData.IsEnd = false;
+                _runtimeData.IsEnd = false;
                 _runtimeData.Progress = 0;
             }
         }
@@ -141,6 +142,12 @@ namespace Game
             _systems.Add(new FinalCutSceneSystem());
             ref var end = ref _world.NewEntity().Get<FinalCutsceneComponent>();
             _sceneData.Npc.gameObject.SetActive(false);
+            _sceneData.Snowing.gameObject.SetActive(false);
+
+            if(_sceneData.Player != default)
+            {
+                _sceneData.Player.gameObject.SetActive(false);
+            }
         }
     }
     

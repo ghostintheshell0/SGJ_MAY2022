@@ -1,10 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 using Cinemachine;
-using LeopotamGroup.Globals;
 
 namespace Game
 {
@@ -27,6 +24,7 @@ namespace Game
         public bool FollowCamera;
         public bool EnableFootsteps;
         public bool EnableWind;
+        public bool ShowNPC;
     
         [Button]
         public void Grab()
@@ -34,12 +32,6 @@ namespace Game
             Entities = GameObject.FindObjectsOfType<MonoEntity>();
         }
 
-        public void Restart()
-        {
-            var runtimeData = Service<RuntimeData>.Get();
-            runtimeData.IsNewGame = true;
-            SceneManager.LoadScene(gameObject.scene.name);
-        }
     }
 
     [System.Serializable]

@@ -33,7 +33,8 @@ namespace Game
                 {
                     cmd.ZeroStep = true;
                     cmd.Delay = cutsceneData.ZeroPartDuration;
-                    _ui.ChangeSceneFade.DOFade(0, _ui.ChangeSceneFadeDuration * 3);
+                    cutsceneData.CutSceneCamera3.enabled = true;
+                    _sceneData.CinemachineBrain.m_DefaultBlend.m_Time = cutsceneData.Camera2BlendDuration;
                     continue;
                 }
 
@@ -42,8 +43,8 @@ namespace Game
                 {
                     if(cmd.FirstStep == false)
                     {
-                        _sceneData.CinemachineBrain.m_DefaultBlend.m_Time = cutsceneData.Camera1BlendDuration;
                         
+                        _ui.ChangeSceneFade.DOFade(0, _ui.ChangeSceneFadeDuration * 3);
                         cutsceneData.CutSceneCamera.enabled = true;
                 //        cutsceneData.Npc.ReadyForMove();
                 //        cutsceneData.Npc.Agent.SetDestination(cutsceneData.HousePoint.position);

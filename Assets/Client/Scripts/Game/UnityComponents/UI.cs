@@ -1,5 +1,7 @@
+using LeopotamGroup.Globals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game
@@ -18,5 +20,19 @@ namespace Game
 
         public string[] DevelopersVariations;
         public float ChangeSceneFadeDuration;
+
+        public string MainSceneName;
+
+        private void Start()
+        {
+            RestartButton.onClick.AddListener(Restart);
+        }
+        
+        public void Restart()
+        {
+            var runtimeData = Service<RuntimeData>.Get();
+            runtimeData.IsNewGame = true;
+            SceneManager.LoadScene(MainSceneName);
+        }
     }
 }

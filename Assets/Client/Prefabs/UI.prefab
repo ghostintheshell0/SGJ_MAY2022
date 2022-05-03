@@ -570,6 +570,7 @@ MonoBehaviour:
   - Diccuric_Sigeon<br>&<br>PandaWillTouchYou
   - PandaWillTouchYou<br>&<br>Diccuric_Sigeon
   ChangeSceneFadeDuration: 2.6
+  MainSceneName: SampleScene
 --- !u!1 &3896971401071036860
 GameObject:
   m_ObjectHideFlags: 0
