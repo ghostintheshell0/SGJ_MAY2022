@@ -1,4 +1,3 @@
-using System;
 using Leopotam.Ecs;
 using LeopotamGroup.Globals;
 using UnityEngine;
@@ -24,25 +23,34 @@ namespace Game
 #endif
             InitServices();
 
+            if(_runtimeData.IsEnd)
+            {
+                EndGame();
+            }
+            else
+            {
+                _systems
+                    .Add(new InitSystem())
+                    .Add(new SpawnCrapSystem())
+                    .Add(new RaycastsSystem())
+                    .Add(new PlayerInputSystem())
+                    .Add(new PickCrapSystem())
+                    .Add(new EnterNpcSystem())
+                    .Add(new HideObjectWithDelaySystem())
+                    .Add(new LookAtSystem())
+                    .Add(new GameAreaSystem())
+                    .Add(new AgentAnimationSystem())
+                    .Add(new RespawnSystem())
+                    .Add(new ProgressionSystem())
+                    .Add(new FinalCutSceneSystem())
+                    .Add(new EasterDancingSystem())
+                    .Add(new ChangeSceneSystem())
+                    .Add(new SpawnPlayerSystem())
+                    .Add(new IgnoreTriggersSystem())
+                    .Add(new FollowSustem());
+            }
+
             _systems
-                .Add(new InitSystem())
-                .Add(new SpawnCrapSystem())
-                .Add(new RaycastsSystem())
-                .Add(new PlayerInputSystem())
-                .Add(new PickCrapSystem())
-                .Add(new EnterNpcSystem())
-                .Add(new HideObjectWithDelaySystem())
-                .Add(new LookAtSystem())
-                .Add(new GameAreaSystem())
-                .Add(new AgentAnimationSystem())
-                .Add(new RespawnSystem())
-                .Add(new ProgressionSystem())
-                .Add(new FinalCutSceneSystem())
-                .Add(new EasterDancingSystem())
-                .Add(new ChangeSceneSystem())
-                .Add(new SpawnPlayerSystem())
-                .Add(new IgnoreTriggersSystem())
-                .Add(new FollowSustem())
                 .Inject(_sceneData)
                 .Inject(_staticData)
                 .Inject(_runtimeData)
@@ -68,6 +76,9 @@ namespace Game
 
         private void InitServices()
         {
+
+
+            Service<StaticData>.Set(_staticData);
             var runtimeData = Service<RuntimeData>.Get();
             if(runtimeData == default)
             {
@@ -120,84 +131,17 @@ namespace Game
                 ui.EndGameScreen.alpha = 0;
                 ui.EndGameScreen.gameObject.SetActive(false);
                 _runtimeData.IsNewGame = false;
+            //    _runtimeData.IsEnd = false;
+                _runtimeData.Progress = 0;
             }
         }
-    }
 
-    public class SpawnPlayerSystem : IEcsInitSystem
-    {
-        private readonly StaticData _staticData = default;
-        private readonly SceneData _sceneData = default;
-        private readonly RuntimeData _runtimeData = default;
-        private readonly EcsWorld _world = default;
-
-        private readonly EcsFilter<PlayerSpawnerComponent> _spawners = default;
-    
-        public void Init()
+        private void EndGame()
         {
-            var spawnData = GetSpawner(_runtimeData.PreviousScene);
-            var player = _sceneData.Player;
-            if(!_sceneData.Player.Entity.IsAlive())
-            {
-                _sceneData.Player.Init(_world);
-            }
-            ref var ignoreTrigger = ref player.Entity.Get<IgnoreTriggerComponent>();
-            ignoreTrigger.LifeTime = _staticData.IgnoreTriggersAfterSpawnTime;
-            player.Agent.Warp(spawnData.Point.position);
-            player.transform.rotation = spawnData.Point.rotation;
-            spawnData.OnSpawn?.Invoke(player);
-
-            if(_sceneData.FollowCamera)
-            {
-                _sceneData.CinemachineCamera.m_Follow = player.transform;
-            }
-
-            _sceneData.CinemachineCamera.m_LookAt = player.transform;
-        }
-
-        private PlayerSpawnerComponent GetSpawner(string name)
-        {
-            foreach(var i in _spawners)
-            {
-                ref var spawner = ref _spawners.Get1(i);
-                if(spawner.Name == name)
-                {
-                    return spawner;
-                }
-            }
-
-            var spawnData = new PlayerSpawnerComponent();
-            spawnData.Point = _sceneData.SpawnPoint;
-            return spawnData;
+            _systems.Add(new FinalCutSceneSystem());
+            ref var end = ref _world.NewEntity().Get<FinalCutsceneComponent>();
+            _sceneData.Npc.gameObject.SetActive(false);
         }
     }
     
-    public struct PlayerSpawnerComponent
-    {
-        public Transform Point;
-        public string Name;
-        public Action<Player> OnSpawn;
-
-    }
-
-    public class FollowSustem : IEcsRunSystem
-    {
-        private readonly EcsFilter<FollowComponent> _filter = default;
-    
-        public void Run()
-        {
-            foreach(var i in _filter)
-            {
-                ref var cmd = ref _filter.Get1(i);
-                
-                cmd.Follower.position = cmd.Target.position;
-            }
-        }
-    }
-    
-    public struct FollowComponent
-    {
-        public Transform Follower;
-        public Transform Target;
-    }
 }

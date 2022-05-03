@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using LeopotamGroup.Globals;
 using UnityEngine;
 
 namespace Game
@@ -19,6 +20,13 @@ namespace Game
         {
             var random = Random.insideUnitCircle;
             var pos = new Vector3(random.x, 0f, random.y) * Radius + transform.position;
+            var staticData = Service<StaticData>.Get();
+            var cast = Physics.Raycast(pos, Vector3.down, out var hit, 10f, staticData.GroundLayers);
+            if(cast)
+            {
+                pos = hit.point;
+            }
+
             return pos; 
         }
 

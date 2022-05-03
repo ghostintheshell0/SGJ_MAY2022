@@ -2,6 +2,7 @@ namespace Game
 {
     public struct FinalCutsceneComponent
     {
+        public bool ZeroStep;
         public bool FirstStep;
         public bool SecondStep;
         public bool ThirdPart;

@@ -24,6 +24,7 @@ namespace Game
         public float TraktorSpeed;
         public Rigidbody TraktorBody;
 
+        public float ZeroPartDuration;
         public float FirstPartDuration;
         public float SecondPartDuration;
         public float ThirtdPartDuration;
