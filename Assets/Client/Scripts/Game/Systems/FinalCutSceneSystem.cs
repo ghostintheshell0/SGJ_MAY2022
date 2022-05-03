@@ -27,7 +27,6 @@ namespace Game
                 ref var cmd = ref _filter.Get1(i);
 
                 var cutsceneData = _sceneData.FinalCutScene;
-            //    cutsceneData.Player = _sceneData.Player;
 
                 if(cmd.ZeroStep == false)
                 {
@@ -46,9 +45,6 @@ namespace Game
                         
                         _ui.ChangeSceneFade.DOFade(0, _ui.ChangeSceneFadeDuration * 3);
                         cutsceneData.CutSceneCamera.enabled = true;
-                //        cutsceneData.Npc.ReadyForMove();
-                //        cutsceneData.Npc.Agent.SetDestination(cutsceneData.HousePoint.position);
-                        cmd.FirstStep = true;
                         cmd.Delay = cutsceneData.FirstPartDuration;
                         cutsceneData.Sun.DORotate(cutsceneData.SunRotation, cutsceneData.SunRotationDuration);
                         _world.NewEntity().Get<LockInputComponent>();
@@ -58,7 +54,6 @@ namespace Game
                     {
                         cmd.SecondStep = true;
                         cmd.Delay = cutsceneData.SecondPartDuration;
-                    //    cutsceneData.Player.Agent.SetDestination(cutsceneData.HousePoint.position);
 
                         continue;
                     }
@@ -70,8 +65,6 @@ namespace Game
                         cmd.ThirdPart = true;
                         cmd.Delay = cutsceneData.ThirtdPartDuration;
                         cutsceneData.HouseAnimator.SetBool(AniamtionNames.OpenRoof, true);
-                    //    cutsceneData.Player.gameObject.SetActive(false);
-                    //    cutsceneData.Npc.gameObject.SetActive(false);
                         var audioManager = Service<AudioManager>.Get();
                         audioManager.Wind.DOFade(0, cutsceneData.ThirtdPartDuration);
                         continue;
