@@ -92,17 +92,10 @@ MonoBehaviour:
   HandPoint: {fileID: 561784829134601465}
   Animator: {fileID: 4460153302688618896}
   SpawnPoint: {fileID: 0}
-  PickDistance: 1.6
+  PickDistance: 1.8
   PrePickDuration: 1.9
   PostPickDuration: 2
-  StepsDistance: 0.4
   RespawnDuration: 2.8
-  Steps:
-  - {fileID: 0}
-  - {fileID: 0}
-  StepOffsets:
-  - {x: 0, y: 0.5, z: 0.1}
-  - {x: 0, y: 0.5, z: -0.1}
   AudioSource: {fileID: 1717457975173404499}
 --- !u!54 &8233206508429038987
 Rigidbody:

@@ -10,7 +10,6 @@ namespace Game
         public Transform MoveTarget;
         public Transform HandPoint;
         public Animator Animator;
-        public Transform SpawnPoint;
 
         public float PickDistance;
         public float PrePickDuration;

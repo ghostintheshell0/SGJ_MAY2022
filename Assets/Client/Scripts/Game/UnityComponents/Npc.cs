@@ -17,6 +17,7 @@ namespace Game
         public NavMeshAgent Agent;
         public float LookRadius;
         public float DelayForDancing;
+        public Transform Hand;
 
         protected override void OnInit()
         {
@@ -62,6 +63,14 @@ namespace Game
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, LookRadius);
+        }
+
+        public void ReadyForMove()
+        {
+            Obstacle.enabled = false;
+            Agent.enabled = true;
+            TriggerCollider.enabled = false;
+            Entity.Del<LookAtComponent>();
         }
     }
 }

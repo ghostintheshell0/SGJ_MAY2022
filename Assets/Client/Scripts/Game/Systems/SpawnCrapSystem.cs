@@ -10,12 +10,16 @@ namespace Game
         private readonly EcsFilter<CrapComponent> _craps = default;
         private readonly StaticData _staticData = default;
         private readonly EcsWorld _world = default;
+        private readonly RuntimeData _runtimeData = default;
     
         public void Init()
         {
             foreach(var i in _filter)
             {
                 ref var cmd = ref _filter.Get1(i);
+                var index = _staticData.AllCrap.IndexOf(cmd.View.Crap);
+                if(index < _runtimeData.Progress) continue;
+
                 var prefab = cmd.View.Crap.Prefab;
                 var pos = cmd.View.GetSpawnPoint(); 
                 var crap = UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
@@ -46,7 +50,6 @@ namespace Game
                     }
                 }
             }
-
         }
     }
 }
