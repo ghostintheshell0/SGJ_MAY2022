@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 388c84b618585c620a32d0eb9f0af68c, type: 3}
   Prefab: {fileID: 4926839227591472985, guid: bf8c3c9b1fcdcd1ee8f43f73a178ab33, type: 3}
-  Color: {r: 0.2214756, g: 0.745283, b: 0.47274256, a: 1}
+  Color: {r: 1, g: 1, b: 1, a: 1}
