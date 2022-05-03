@@ -32,7 +32,6 @@ namespace Game
                 {
                     _sceneData.CinemachineBrain.m_DefaultBlend.m_Time = cutsceneData.Camera1BlendDuration;//Blends.GetBlendForVirtualCameras(_sceneData.CinemachineCamera.name, cutsceneData.CutSceneCamera.name);
                     
-                    cutsceneData.House.Trigger.enabled = false;
                     cutsceneData.CutSceneCamera.enabled = true;
                     cutsceneData.Npc.ReadyForMove();
                     cutsceneData.Npc.Agent.SetDestination(cutsceneData.HousePoint.position);
