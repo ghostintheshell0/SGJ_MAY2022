@@ -16,7 +16,7 @@ namespace Game
         public void Run()
         {
             #if UNITY_EDITOR
-            if(Input.GetKeyDown(_sceneData.FinalCutScene.DebugKey))
+            if(_sceneData.FinalCutScene != default && Input.GetKeyDown(_sceneData.FinalCutScene.DebugKey))
             {
                 _world.NewEntity().Get<FinalCutsceneComponent>();
             }
@@ -30,7 +30,7 @@ namespace Game
 
                 if(cmd.FirstStep == false)
                 {
-                    _sceneData.CinemachineBrain.m_DefaultBlend.m_Time = cutsceneData.Camera1BlendDuration;//Blends.GetBlendForVirtualCameras(_sceneData.CinemachineCamera.name, cutsceneData.CutSceneCamera.name);
+                    _sceneData.CinemachineBrain.m_DefaultBlend.m_Time = cutsceneData.Camera1BlendDuration;
                     
                     cutsceneData.CutSceneCamera.enabled = true;
                     cutsceneData.Npc.ReadyForMove();

@@ -42,6 +42,7 @@ namespace Game
                 .Add(new ChangeSceneSystem())
                 .Add(new SpawnPlayerSystem())
                 .Add(new IgnoreTriggersSystem())
+                .Add(new FollowSustem())
                 .Inject(_sceneData)
                 .Inject(_staticData)
                 .Inject(_runtimeData)
@@ -98,6 +99,20 @@ namespace Game
                 Service<UI>.Set(ui);
             }
 
+            var player = Service<Player>.Get();
+            if(player == default)
+            {
+                player = Instantiate(_staticData.PlayerPrefab);
+                DontDestroyOnLoad(player);
+                Service<Player>.Set(player);
+            }
+
+            if(player.Entity.IsAlive())
+            {
+                player.Entity.Del<LockInputComponent>();
+            }
+            _sceneData.Player = player;
+
             if(_runtimeData.IsNewGame)
             {
                 audioManager.Music.volume = audioManager.defaultVolume;
@@ -114,6 +129,7 @@ namespace Game
         private readonly StaticData _staticData = default;
         private readonly SceneData _sceneData = default;
         private readonly RuntimeData _runtimeData = default;
+        private readonly EcsWorld _world = default;
 
         private readonly EcsFilter<PlayerSpawnerComponent> _spawners = default;
     
@@ -121,12 +137,22 @@ namespace Game
         {
             var spawnData = GetSpawner(_runtimeData.PreviousScene);
             var player = _sceneData.Player;
-
+            if(!_sceneData.Player.Entity.IsAlive())
+            {
+                _sceneData.Player.Init(_world);
+            }
             ref var ignoreTrigger = ref player.Entity.Get<IgnoreTriggerComponent>();
             ignoreTrigger.LifeTime = _staticData.IgnoreTriggersAfterSpawnTime;
             player.Agent.Warp(spawnData.Point.position);
             player.transform.rotation = spawnData.Point.rotation;
             spawnData.OnSpawn?.Invoke(player);
+
+            if(_sceneData.FollowCamera)
+            {
+                _sceneData.CinemachineCamera.m_Follow = player.transform;
+            }
+
+            _sceneData.CinemachineCamera.m_LookAt = player.transform;
         }
 
         private PlayerSpawnerComponent GetSpawner(string name)
@@ -152,5 +178,26 @@ namespace Game
         public string Name;
         public Action<Player> OnSpawn;
 
+    }
+
+    public class FollowSustem : IEcsRunSystem
+    {
+        private readonly EcsFilter<FollowComponent> _filter = default;
+    
+        public void Run()
+        {
+            foreach(var i in _filter)
+            {
+                ref var cmd = ref _filter.Get1(i);
+                
+                cmd.Follower.position = cmd.Target.position;
+            }
+        }
+    }
+    
+    public struct FollowComponent
+    {
+        public Transform Follower;
+        public Transform Target;
     }
 }

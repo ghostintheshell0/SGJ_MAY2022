@@ -31,7 +31,6 @@ namespace Game
                     _ui.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
                     var spawnPos = _sceneData.SpawnPoint.position;
                     cmd.Player.Agent.Warp(spawnPos);
-                    cmd.Player.MoveTarget.position = spawnPos;
                     cmd.Player.Agent.SetDestination(spawnPos);
 
                     ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();

@@ -1,15 +1,17 @@
 using Leopotam.Ecs;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Game
 {
     public class House : MonoEntity
     {
-        public Collider Trigger;
+
+        public Transform DoorObstcale;
         public Transform HousePoint;
         public Transform ExitPoint;
         public string SceneName;
-        public bool IsLocked;
+        [SerializeField] private bool isLocked;
 
         protected override void OnInit()
         {
@@ -38,5 +40,24 @@ namespace Game
         {
         }
 
+        [Button]
+        public void ChangeLock()
+        {
+            IsLocked = !IsLocked;
+        }
+
+        public bool IsLocked
+        {
+            get => isLocked;
+            set
+            {
+                isLocked = value;
+                if(DoorObstcale != default)
+                {
+                    DoorObstcale.gameObject.SetActive(value);
+                }
+                
+            }
+        }
     }
 }

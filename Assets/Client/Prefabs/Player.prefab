@@ -88,10 +88,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agent: {fileID: 7178117374467222347}
-  MoveTarget: {fileID: 0}
   HandPoint: {fileID: 561784829134601465}
   Animator: {fileID: 4460153302688618896}
-  SpawnPoint: {fileID: 0}
+  Footsteps: {fileID: 7268764928740035751}
   PickDistance: 1.8
   PrePickDuration: 1.9
   PostPickDuration: 2

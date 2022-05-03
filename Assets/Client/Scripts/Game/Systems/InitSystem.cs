@@ -41,6 +41,20 @@ namespace Game
 
             _ui.ChangeSceneFade.SetAlpha(1);
             _ui.ChangeSceneFade.DOFade(0f, _ui.ChangeSceneFadeDuration);
+
+            if(_sceneData.Snowing != default)
+            {
+                ref var follow = ref _world.NewEntity().Get<FollowComponent>();
+                follow.Follower = _sceneData.Snowing.transform;
+                follow.Target = _sceneData.Player.transform;
+            }
+
+            _sceneData.Npc.Footsteps.SetActive(_sceneData.EnableFootsteps);
+            _sceneData.Player.Footsteps.SetActive(_sceneData.EnableFootsteps);
+
+            var windVolume = _sceneData.EnableWind ? 1 : 0;
+
+            Service<AudioManager>.Get().Wind.DOFade(windVolume, 1f);
         }
 
         private void ChangeAudio(float value)

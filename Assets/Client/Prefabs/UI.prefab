@@ -569,7 +569,7 @@ MonoBehaviour:
   DevelopersVariations:
   - Diccuric_Sigeon<br>&<br>PandaWillTouchYou
   - PandaWillTouchYou<br>&<br>Diccuric_Sigeon
-  ChangeSceneFadeDuration: 1.5
+  ChangeSceneFadeDuration: 2.6
 --- !u!1 &3896971401071036860
 GameObject:
   m_ObjectHideFlags: 0

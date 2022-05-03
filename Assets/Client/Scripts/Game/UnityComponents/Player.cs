@@ -7,9 +7,9 @@ namespace Game
     public class Player : MonoEntity
     {
         public NavMeshAgent Agent;
-        public Transform MoveTarget;
         public Transform HandPoint;
         public Animator Animator;
+        public GameObject Footsteps;
 
         public float PickDistance;
         public float PrePickDuration;

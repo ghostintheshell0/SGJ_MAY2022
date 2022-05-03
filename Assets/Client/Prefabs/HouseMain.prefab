@@ -587,6 +587,54 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 3, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &3880536681826816517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3349765445516102079}
+  - component: {fileID: 2458174498461362130}
+  m_Layer: 0
+  m_Name: DoorObstacle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3349765445516102079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880536681826816517}
+  m_LocalRotation: {x: -0, y: -0.9985712, z: -0, w: 0.053436976}
+  m_LocalPosition: {x: -1.52, y: 0.83, z: 1.44}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7539274183207347473}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &2458174498461362130
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880536681826816517}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1.5, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5994905401167550098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1094,7 @@ Transform:
   - {fileID: 2332914765229799149}
   - {fileID: 2052027922470671808}
   - {fileID: 5828160020814221498}
+  - {fileID: 3349765445516102079}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1061,11 +1110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78003ba42e0477de5ac1e7ee1c662d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoorObstcale: {fileID: 3349765445516102079}
   Trigger: {fileID: 0}
   HousePoint: {fileID: 5828160020814221498}
   ExitPoint: {fileID: 2052027922470671808}
   SceneName: House
-  IsLocked: 1
+  isLocked: 0
 --- !u!95 &6304606393023338375
 Animator:
   serializedVersion: 4

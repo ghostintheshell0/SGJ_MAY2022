@@ -12,6 +12,7 @@ namespace Game
         public GameObject SpeechBubble;
         public Animator Animator;
         public AudioSource AudioSource;
+        public GameObject Footsteps;
         public float ShowBubbleDuration;
         public NavMeshObstacle Obstacle;
         public NavMeshAgent Agent;

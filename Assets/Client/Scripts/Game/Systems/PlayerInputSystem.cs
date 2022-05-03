@@ -71,7 +71,6 @@ namespace Game
                 if(_staticData.GroundLayers.Contains(hit.collider.gameObject.layer))
                 {
                     var worldPos = hit.point;
-                    player.MoveTarget.position = worldPos;
                     player.Agent.SetDestination(worldPos);
                     return;
                 }

@@ -209,6 +209,7 @@ MonoBehaviour:
   SpeechBubble: {fileID: 6839764923893543666}
   Animator: {fileID: 6923231395370595366}
   AudioSource: {fileID: 5168302261903179095}
+  Footsteps: {fileID: 5380940091936729694}
   ShowBubbleDuration: 5
   Obstacle: {fileID: 4936575408134962828}
   Agent: {fileID: 3539550981071968234}

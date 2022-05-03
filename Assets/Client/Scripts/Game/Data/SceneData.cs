@@ -13,16 +13,20 @@ namespace Game
         public Camera MainCamera;
         public CinemachineBrain CinemachineBrain;
         public CinemachineVirtualCamera CinemachineCamera;
-        public Player Player;
+        public Player Player {get; set;} 
         public House House;
         public Transform SpawnPoint;
         public Npc Npc;
+        public Transform Snowing;
 
         public GameArea[] GameAreas;
 
         public MonoEntity[] Entities;
         public AudioClip RespawnClip;
         public FinalCutScene FinalCutScene;
+        public bool FollowCamera;
+        public bool EnableFootsteps;
+        public bool EnableWind;
     
         [Button]
         public void Grab()
