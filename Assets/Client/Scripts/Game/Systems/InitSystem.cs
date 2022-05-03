@@ -1,4 +1,7 @@
+using DG.Tweening;
+using Extensions;
 using Leopotam.Ecs;
+using LeopotamGroup.Globals;
 using UnityEngine;
 
 namespace Game
@@ -23,7 +26,8 @@ namespace Game
             lookAt.Transform = _sceneData.Npc.SpeechBubble.transform;
            
             
-            if(_sceneData.AudioGroup.audioMixer.GetFloat(volumeValueName, out var volume))
+            var audioManager = Service<AudioManager>.Get();
+            if(audioManager.AudioGroup.audioMixer.GetFloat(volumeValueName, out var volume))
             {
                 _ui.AudioSlider.value = volume;
                 _ui.AudioSlider.onValueChanged.AddListener(ChangeAudio);
@@ -33,11 +37,16 @@ namespace Game
                 Debug.LogWarning($"AudioMixer param {volumeValueName} not found");
             }
 
+            _ui.RestartButton.onClick.AddListener(_sceneData.Restart);
+
+            _ui.ChangeSceneFade.SetAlpha(1);
+            _ui.ChangeSceneFade.DOFade(0f, _ui.ChangeSceneFadeDuration);
         }
 
         private void ChangeAudio(float value)
         {
-            _sceneData.AudioGroup.audioMixer.SetFloat(volumeValueName, value);
+            var audioManager = Service<AudioManager>.Get();
+            audioManager.AudioGroup.audioMixer.SetFloat(volumeValueName, value);
         }
     }
 }

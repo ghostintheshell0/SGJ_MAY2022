@@ -28,9 +28,11 @@ namespace Game
                 }
                 else
                 {
-                     _ui.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
-                    cmd.Player.Agent.Warp(cmd.Player.SpawnPoint.position);
-                    cmd.Player.MoveTarget.position = cmd.Player.SpawnPoint.position;
+                    _ui.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
+                    var spawnPos = _sceneData.SpawnPoint.position;
+                    cmd.Player.Agent.Warp(spawnPos);
+                    cmd.Player.MoveTarget.position = spawnPos;
+                    cmd.Player.Agent.SetDestination(spawnPos);
 
                     ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
                     cmd.Player.AudioSource.PlayOneShot(_sceneData.RespawnClip);

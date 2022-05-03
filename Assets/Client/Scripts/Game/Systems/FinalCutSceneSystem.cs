@@ -2,6 +2,7 @@ using Leopotam.Ecs;
 using UnityEngine;
 using DG.Tweening;
 using Extensions;
+using LeopotamGroup.Globals;
 
 namespace Game
 {
@@ -15,7 +16,7 @@ namespace Game
         public void Run()
         {
             #if UNITY_EDITOR
-            if(Input.GetKeyDown(_ui.FinalCutScene.DebugKey))
+            if(Input.GetKeyDown(_sceneData.FinalCutScene.DebugKey))
             {
                 _world.NewEntity().Get<FinalCutsceneComponent>();
             }
@@ -25,18 +26,16 @@ namespace Game
             {
                 ref var cmd = ref _filter.Get1(i);
 
-                var cutsceneData = _ui.FinalCutScene;
+                var cutsceneData = _sceneData.FinalCutScene;
 
                 if(cmd.FirstStep == false)
                 {
                     _sceneData.CinemachineBrain.m_DefaultBlend.m_Time = cutsceneData.Camera1BlendDuration;//Blends.GetBlendForVirtualCameras(_sceneData.CinemachineCamera.name, cutsceneData.CutSceneCamera.name);
-                    cutsceneData.Npc.Obstacle.enabled = false;
-                    cutsceneData.Npc.Agent.enabled = true;
-                    cutsceneData.Npc.Agent.SetDestination(cutsceneData.HousePoint.position);
+                    
                     cutsceneData.House.Trigger.enabled = false;
                     cutsceneData.CutSceneCamera.enabled = true;
-                    cutsceneData.Npc.TriggerCollider.enabled = false;
-                    cutsceneData.Npc.Entity.Del<LookAtComponent>();
+                    cutsceneData.Npc.ReadyForMove();
+                    cutsceneData.Npc.Agent.SetDestination(cutsceneData.HousePoint.position);
                     cmd.FirstStep = true;
                     cmd.Delay = cutsceneData.FirstPartDuration;
                     cutsceneData.Sun.DORotate(cutsceneData.SunRotation, cutsceneData.SunRotationDuration);
@@ -65,6 +64,8 @@ namespace Game
                         cutsceneData.HouseAnimator.SetBool(AniamtionNames.OpenRoof, true);
                         cutsceneData.Player.gameObject.SetActive(false);
                         cutsceneData.Npc.gameObject.SetActive(false);
+                        var audioManager = Service<AudioManager>.Get();
+                        audioManager.Wind.DOFade(0, cutsceneData.ThirtdPartDuration);
                         continue;
                     }
                     else if(cmd.FourthPart == false)

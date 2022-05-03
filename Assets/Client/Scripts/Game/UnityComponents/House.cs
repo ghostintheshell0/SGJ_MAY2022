@@ -1,30 +1,42 @@
+using Leopotam.Ecs;
 using UnityEngine;
 
 namespace Game
 {
     public class House : MonoEntity
     {
-        public Renderer RoofRenderer;
         public Collider Trigger;
+        public Transform HousePoint;
+        public Transform ExitPoint;
+        public string SceneName;
+        public bool IsLocked;
+
+        protected override void OnInit()
+        {
+            ref var spawner = ref Entity.Get<PlayerSpawnerComponent>();
+            spawner.Name = SceneName;
+            spawner.Point = ExitPoint;
+            spawner.OnSpawn += Spawn;
+        }
         
         private void OnTriggerEnter(Collider collider)
         {
+            if(IsLocked) return;
             var player = collider.GetComponent<Player>();
 
             if(player != default)
             {
-                RoofRenderer.enabled = false;
+                if(player.Entity.Has<IgnoreTriggerComponent>()) return;
+                ref var cmd = ref Entity.Get<ChangeSceneComponent>();
+                cmd.MovePoint = HousePoint;
+                cmd.Player = player;
+                cmd.SceneName = SceneName;
             }
         }
 
-        private void OnTriggerExit(Collider collider)
+        private void Spawn(Player player)
         {
-            var player = collider.GetComponent<Player>();
-
-            if(player != default)
-            {
-                RoofRenderer.enabled = true;
-            }
         }
+
     }
 }

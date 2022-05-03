@@ -321,7 +321,6 @@ Transform:
   - {fileID: 438468485}
   - {fileID: 7539274182639466045}
   - {fileID: 1282619731691484900}
-  - {fileID: 6449304947588482841}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -343,9 +342,9 @@ MonoBehaviour:
   CutSceneCamera: {fileID: 2400147914540713140}
   CutSceneCamera2: {fileID: 1663606258}
   Npc: {fileID: 0}
-  HousePoint: {fileID: 6449304947588482841}
+  HousePoint: {fileID: 6449304949230212149}
   HouseAnimator: {fileID: 6304606391448847531}
-  SunRotationDuration: 40
+  SunRotationDuration: 55
   SunRotation: {x: 359.12, y: 2.8699956, z: 0}
   Sun: {fileID: 0}
   Traktor: {fileID: 1282619731691484900}
@@ -362,37 +361,6 @@ MonoBehaviour:
   Camera2BlendDuration: 14
   TraktorFlyAngle: 20
   TraktorFlyAngleDuration: 1.5
---- !u!1 &5283008523564933971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6449304947588482841}
-  m_Layer: 0
-  m_Name: HousePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6449304947588482841
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5283008523564933971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.34, y: 0, z: 34.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2400147914974423360}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &462961787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1282619731583994527, guid: 4f983e4a876350200bb54257c3993b47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.36
+      value: 12.86
       objectReference: {fileID: 0}
     - target: {fileID: 1282619731583994527, guid: 4f983e4a876350200bb54257c3993b47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1282619731583994527, guid: 4f983e4a876350200bb54257c3993b47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.33
+      value: 30.93
       objectReference: {fileID: 0}
     - target: {fileID: 1282619731583994527, guid: 4f983e4a876350200bb54257c3993b47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -447,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2956121801510357341, guid: 4f983e4a876350200bb54257c3993b47, type: 3}
       propertyPath: m_Name
-      value: Traktor
+      value: TraktorFinal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -535,6 +503,11 @@ MonoBehaviour:
 --- !u!95 &6304606391448847531 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6304606393023338375, guid: c431d9ee1eba706469d7a7a2c6786bac, type: 3}
+  m_PrefabInstance: {fileID: 1646744364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6449304949230212149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6449304947588482841, guid: c431d9ee1eba706469d7a7a2c6786bac, type: 3}
   m_PrefabInstance: {fileID: 1646744364}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7539274182639466045 stripped

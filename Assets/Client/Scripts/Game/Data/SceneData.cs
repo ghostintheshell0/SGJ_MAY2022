@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using LeopotamGroup.Globals;
 
 namespace Game
 {
@@ -13,17 +14,15 @@ namespace Game
         public CinemachineBrain CinemachineBrain;
         public CinemachineVirtualCamera CinemachineCamera;
         public Player Player;
+        public House House;
+        public Transform SpawnPoint;
         public Npc Npc;
 
         public GameArea[] GameAreas;
 
         public MonoEntity[] Entities;
-
-        public AudioMixerGroup AudioGroup;
-        public AudioSource AudioSource;
         public AudioClip RespawnClip;
-
-
+        public FinalCutScene FinalCutScene;
     
         [Button]
         public void Grab()
@@ -33,6 +32,8 @@ namespace Game
 
         public void Restart()
         {
+            var runtimeData = Service<RuntimeData>.Get();
+            runtimeData.IsNewGame = true;
             SceneManager.LoadScene(gameObject.scene.name);
         }
     }

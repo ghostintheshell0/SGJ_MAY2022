@@ -7,6 +7,7 @@ namespace Game
         private readonly EcsFilter<EnterNpcCommand> _filter = default;
         private readonly RuntimeData _runtimeData = default;
         private readonly StaticData _staticData = default;
+        private readonly SceneData _sceneData = default;
         private readonly EcsWorld _world = default;
     
         public void Run()
@@ -18,16 +19,35 @@ namespace Game
                 ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
                 if(player.CurrentCrap != default)
                 {
-                    player.CurrentCrap.Entity.Destroy();
-                    UnityEngine.Object.Destroy(player.CurrentCrap.gameObject);
+                    var crap = player.CurrentCrap;
                     player.CurrentCrap = default;
                     cmd.Npc.SpeechBubble.SetActive(false);
                     _runtimeData.Progress++;
                     cmd.Npc.AudioSource.Play();
                     player.View.Entity.Get<RespawnCrapCommand>();
+
+                    if(_runtimeData.Progress == 1)
+                    {
+                        _sceneData.House.IsLocked = false;
+                        cmd.Npc.ReadyForMove();
+                        cmd.Npc.Animator.SetBool(AniamtionNames.Carrying, true);
+                        cmd.Npc.Agent.SetDestination(_sceneData.House.HousePoint.position);
+                        crap.Collider.enabled = false;
+                        crap.Obstacle.enabled = false;
+                        crap.transform.position = cmd.Npc.Hand.position;
+                        crap.transform.SetParent(cmd.Npc.Hand, true);
+                        crap.transform.localPosition = UnityEngine.Vector3.zero;
+                        crap.Entity.Del<CrapComponent>();
+                    }
+                    else
+                    {
+                        crap.Entity.Destroy();
+                        UnityEngine.Object.Destroy(crap.gameObject);
+                    }
+                   
                 }
                 
-                if(_runtimeData.Progress < _staticData.AllCrap.Length)
+                if(_runtimeData.Progress < _staticData.AllCrap.Count)
                 {
                     ShowBubble(cmd.Npc);
                     player.View.Entity.Get<UpdateProgressComponent>();
@@ -35,6 +55,11 @@ namespace Game
                 else
                 {
                     var ent = _world.NewEntity();
+                    _runtimeData.IsEnd = true;
+                    ref var changeScene = ref ent.Get<ChangeSceneComponent>();
+                    changeScene.SceneName = _staticData.MainScene;
+                    changeScene.Player = player.View;
+                    changeScene.MovePoint = player.View.transform;
                     ent.Get<FinalCutsceneComponent>();
                 }
                 
