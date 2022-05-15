@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Extensions;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Game
         private readonly EcsFilter<RespawnCommand> _filter = default;
         private readonly EcsFilter<CrapSpawnerComponent> _spawners = default;
         private readonly SceneData _sceneData = default;
+        private readonly StaticData _staticData = default;
         private readonly UI _ui = default;
     
         public void Run()
@@ -58,7 +60,12 @@ namespace Game
                 var spawner = GetSpawner(crap.Data);
                 if(spawner != default)
                 {
-                    crap.transform.position = spawner.GetSpawnPoint();
+                    var randomPos = spawner.GetSpawnPoint();
+                    crap.transform.position = randomPos;
+                    crap.transform.PlaceOn(_staticData.PlaceOnDistance, _staticData.GroundLayers, true);
+                    ref var fixSpawn = ref crap.Entity.Get<FixCrapSpawnComponent>();
+                    fixSpawn.View = crap;
+                    fixSpawn.Delay = _staticData.FixCrapSpawnDuration;
                 }
                 
             }

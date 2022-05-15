@@ -1,3 +1,4 @@
+using Extensions;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -27,8 +28,12 @@ namespace Game
                 var crap = UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
                 crap.Init(_world);
                 crap.Data = cmd.View.Crap;
+                crap.transform.PlaceOn(_staticData.PlaceOnDistance, _staticData.GroundLayers, true);
                 ref var crapComponent = ref crap.Entity.Get<CrapComponent>();
                 crapComponent.Spawner = cmd.View;
+                ref var fixSpawn = ref crap.Entity.Get<FixCrapSpawnComponent>();
+                fixSpawn.View = crap;
+                fixSpawn.Delay = _staticData.FixCrapSpawnDuration;
             }
 
             _world.NewEntity().Get<UpdateProgressComponent>();
@@ -36,6 +41,11 @@ namespace Game
 
         public void Run()
         {
+            if(Input.GetKeyDown(_sceneData.RespawnCrapButton))
+            {
+                _world.NewEntity().Get<RespawnCrapCommand>();
+            }
+
             if(!_respawns.IsEmpty())
             {
                 foreach(var i in _respawns)
@@ -50,6 +60,10 @@ namespace Game
                     {
                         if(_sceneData.Player.CurrentCrap != default && _sceneData.Player.CurrentCrap.Data.name == crap.View.Data.name) continue;
                         crap.View.transform.position = crap.Spawner.GetSpawnPoint();
+                        crap.View.transform.PlaceOn(_staticData.PlaceOnDistance, _staticData.GroundLayers, true);
+                        ref var fixSpawn = ref crap.View.Entity.Get<FixCrapSpawnComponent>();
+                        fixSpawn.View = crap.View;
+                        fixSpawn.Delay = _staticData.FixCrapSpawnDuration;
                     }
                 }
             }

@@ -12,7 +12,7 @@ namespace Game
         public GameObject SpeechBubble;
         public Animator Animator;
         public AudioSource AudioSource;
-        public GameObject Footsteps;
+        public FootStepsEmmiter Footsteps;
         public float ShowBubbleDuration;
         public NavMeshObstacle Obstacle;
         public NavMeshAgent Agent;
@@ -38,6 +38,12 @@ namespace Game
             ref var follow = ref World.NewEntity().Get<FollowComponent>();
             follow.Target = this.transform;
             follow.Follower = SpeechBubble.transform;
+
+            if(Footsteps != default)
+            {
+                ref var footStepsEmmiter = ref Entity.Get<FootStepsEmmiterComponent>();
+                footStepsEmmiter.View = Footsteps;
+            }
         }
         
         private void OnTriggerEnter(Collider other)

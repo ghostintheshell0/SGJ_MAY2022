@@ -13,6 +13,8 @@ namespace Game
         public LayerMask InputLayers;
         public LayerMask InteractiveObjectsLayer;
         public LayerMask GroundLayers;
+        public float PlaceOnDistance;
+        public float FixCrapSpawnDuration;
         public string MainScene;
 
         [Space(20)][Header("Gameplay data")]

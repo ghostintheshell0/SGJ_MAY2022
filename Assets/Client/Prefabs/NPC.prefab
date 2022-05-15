@@ -195,7 +195,7 @@ MonoBehaviour:
   SpeechBubble: {fileID: 6839764923893543666}
   Animator: {fileID: 3195482525036796539}
   AudioSource: {fileID: 5168302261903179095}
-  Footsteps: {fileID: 5380940091936729694}
+  Footsteps: {fileID: 6135239266958574708}
   ShowBubbleDuration: 5
   Obstacle: {fileID: 4936575408134962828}
   Agent: {fileID: 3539550981071968234}
@@ -333,10 +333,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: {fileID: 5439794273411777081}
-  agent: {fileID: 3539550981071968234}
+  Agent: {fileID: 3539550981071968234}
   delta: 1
   gap: 0.3
-  YOffset: -0.05
+  YOffset: 0.05
+  StartDirection: 1
+  Test: {x: 0, y: 0, z: 0}
 --- !u!54 &6120237280230251474
 Rigidbody:
   m_ObjectHideFlags: 0

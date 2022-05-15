@@ -2,7 +2,7 @@ using Leopotam.Ecs;
 
 namespace Game
 {
-    public class FollowSustem : IEcsRunSystem
+    public class FollowSystem : IEcsRunSystem
     {
         private readonly EcsFilter<FollowComponent> _filter = default;
     

@@ -8,7 +8,6 @@ namespace Game
     {
         private readonly EcsFilter<ChangeSceneComponent> _filter = default;
         private readonly RuntimeData _runtimeData = default;
-        private readonly StaticData _staticData = default;
         private readonly UI _ui = default;
     
         public void Run()

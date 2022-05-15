@@ -48,9 +48,6 @@ namespace Game
                 follow.Target = _sceneData.Player.transform;
             }
 
-            _sceneData.Npc.Footsteps.SetActive(_sceneData.EnableFootsteps);
-            _sceneData.Player.Footsteps.SetActive(_sceneData.EnableFootsteps);
-
             var windVolume = _sceneData.EnableWind ? 1 : 0;
 
             Service<AudioManager>.Get().Wind.DOFade(windVolume, 1f);

@@ -75,6 +75,18 @@ namespace Extensions
             scale.x = direction < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
             t.localScale = scale;
         }
+
+        public static void PlaceOn(this Transform t, float distance,  LayerMask layers, bool rotate = false)
+        {
+            if(Physics.Raycast(t.position, Vector3.down, out var ray, distance, layers))
+            {
+                t.transform.position = ray.point;
+                if(rotate)
+                {
+                    t.transform.rotation = Quaternion.FromToRotation(t.up, ray.normal);
+                }
+            }
+        }
     }
 
     public static class GameObjectExtensions

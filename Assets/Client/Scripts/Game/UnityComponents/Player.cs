@@ -9,7 +9,7 @@ namespace Game
         public NavMeshAgent Agent;
         public Transform HandPoint;
         public Animator Animator;
-        public GameObject Footsteps;
+        public FootStepsEmmiter Footsteps;
 
         public float PickDistance;
         public float PrePickDuration;
@@ -29,6 +29,12 @@ namespace Game
             ref var animatedAgent = ref Entity.Get<AnimatedAgentComponent>();
             animatedAgent.Agent = Agent;
             animatedAgent.Animator = Animator;
+
+            if(Footsteps != default)
+            {
+                ref var footStepsEmmiter = ref Entity.Get<FootStepsEmmiterComponent>();
+                footStepsEmmiter.View = Footsteps;
+            }
         }
     }
 }

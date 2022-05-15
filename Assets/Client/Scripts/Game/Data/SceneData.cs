@@ -7,6 +7,7 @@ namespace Game
 {
     public class SceneData : MonoBehaviour
     {
+        public KeyCode RespawnCrapButton;
         public Camera MainCamera;
         public CinemachineBrain CinemachineBrain;
         public CinemachineVirtualCamera CinemachineCamera;

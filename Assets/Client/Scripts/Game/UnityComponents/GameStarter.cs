@@ -32,6 +32,7 @@ namespace Game
                 _systems
                     .Add(new InitSystem())
                     .Add(new SpawnCrapSystem())
+                    .Add(new FixCrapSpawnSystem())
                     .Add(new RaycastsSystem())
                     .Add(new PlayerInputSystem())
                     .Add(new PickCrapSystem())
@@ -47,7 +48,9 @@ namespace Game
                     .Add(new ChangeSceneSystem())
                     .Add(new SpawnPlayerSystem())
                     .Add(new IgnoreTriggersSystem())
-                    .Add(new FollowSustem());
+                    .Add(new FollowSystem())
+                    .Add(new FootStepsEmmiterSystem());
+                    
             }
 
             _systems

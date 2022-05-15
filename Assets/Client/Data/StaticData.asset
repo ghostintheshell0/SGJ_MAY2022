@@ -23,6 +23,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 256
+  PlaceOnDistance: 10
+  FixCrapSpawnDuration: 0.05
   MainScene: SampleScene
   AllCrap:
   - {fileID: 11400000, guid: 56345799617f8c388835b6eecfdceab3, type: 2}

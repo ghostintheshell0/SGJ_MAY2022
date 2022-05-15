@@ -8,6 +8,7 @@ namespace Game
     {
         public Collider Collider;
         public NavMeshObstacle Obstacle;
+        public NavMeshAgent Agent;
         public AudioClip PickClip;
         public CrapData Data {get; set;}
 
