@@ -19,9 +19,9 @@ namespace Game
                 cmd.Player.Entity.Get<LockInputComponent>();
                 cmd.Player.Agent.SetDestination(cmd.MovePoint.position);
                 var t = _ui.ChangeSceneFade.DOFade(1f, _ui.ChangeSceneFadeDuration);
-                var targetScene = cmd.SceneName;
+                var targetScene = cmd.NextSceneName;
                 t.onComplete += () => ChangeScene(targetScene);
-                _runtimeData.PreviousScene = cmd.Player.gameObject.scene.name;
+                _runtimeData.PreviousScene = SceneManager.GetActiveScene().name;
                 _filter.GetEntity(i).Del<ChangeSceneComponent>();
             }
         }

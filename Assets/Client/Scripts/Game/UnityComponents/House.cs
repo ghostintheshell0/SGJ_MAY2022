@@ -32,7 +32,7 @@ namespace Game
                 ref var cmd = ref Entity.Get<ChangeSceneComponent>();
                 cmd.MovePoint = HousePoint;
                 cmd.Player = player;
-                cmd.SceneName = SceneName;
+                cmd.NextSceneName = SceneName;
             }
         }
 

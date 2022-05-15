@@ -61,7 +61,7 @@ namespace Game
                     var ent = _world.NewEntity();
                     _runtimeData.IsEnd = true;
                     ref var changeScene = ref ent.Get<ChangeSceneComponent>();
-                    changeScene.SceneName = _staticData.MainScene;
+                    changeScene.NextSceneName = _staticData.MainScene;
                     changeScene.Player = player.View;
                     changeScene.MovePoint = player.View.transform;
                 }
