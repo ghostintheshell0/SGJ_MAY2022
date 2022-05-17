@@ -80,24 +80,12 @@ namespace Game
         private void InitServices()
         {
             Service<StaticData>.Set(_staticData);
+            Service<SceneData>.Set(_sceneData);
 
-            var audioManager = Service<AudioManager>.Get();
-            if(audioManager == default)
-            {
-                audioManager = Instantiate(_staticData.AudioManagerPrefab);
-                DontDestroyOnLoad(audioManager);
-                Service<AudioManager>.Set(audioManager);
-            }
-
-
-            var ui = Service<UI>.Get();
-            if(ui == default)
-            {
-                ui = Instantiate(_staticData.UIPrefab);
-                DontDestroyOnLoad(ui);
-                Service<UI>.Set(ui);
-            }
-
+            var audioManager = InitServiceFromPrefab<AudioManager>(_staticData.AudioManagerPrefab);
+            var ui = InitServiceFromPrefab<UI>(_staticData.UIPrefab);
+            var player = InitServiceFromPrefab<Character>(_staticData.PlayerPrefab);
+            
             var runtimeData = Service<RuntimeData>.Get();
             if(runtimeData == default)
             {
@@ -111,19 +99,6 @@ namespace Game
                 _sceneData.House.IsLocked = _runtimeData.Progress == 0;
             }
 
-
-            var player = Service<Player>.Get();
-            if(player == default)
-            {
-                player = Instantiate(_staticData.PlayerPrefab);
-                DontDestroyOnLoad(player);
-                Service<Player>.Set(player);
-            }
-
-            if(player.Entity.IsAlive())
-            {
-                player.Entity.Del<LockInputComponent>();
-            }
             _sceneData.Player = player;
 
             if(_runtimeData.IsNewGame)
@@ -152,6 +127,18 @@ namespace Game
                 _sceneData.Player.gameObject.SetActive(false);
             }
         }
+
+        private T InitServiceFromPrefab<T>(T prefab) where T : Component
+        {
+            var service = Service<T>.Get();
+            if(service == default)
+            {
+                service = Instantiate(prefab);
+                DontDestroyOnLoad(service);
+                Service<T>.Set(service);
+            }
+
+            return service;
+        }
     }
-    
 }

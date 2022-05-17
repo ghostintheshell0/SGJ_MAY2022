@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1596926907643845396}
   - component: {fileID: 3588695753533370334}
   - component: {fileID: -6472467580023088110}
+  - component: {fileID: 7016900811526947117}
   m_Layer: 0
   m_Name: Tree2a
   m_TagString: Untagged
@@ -29,7 +30,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.874869, z: -0, w: 0.48435974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,7 +53,6 @@ MeshRenderer:
   m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -100,3 +99,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 3.86, z: 0}
   m_TimeToStationary: 0.5
+--- !u!136 &7016900811526947117
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084235351651290635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.71
+  m_Height: 11.726547
+  m_Direction: 1
+  m_Center: {x: 0.00000011920935, y: 4.4710293, z: -0.0000002384187}

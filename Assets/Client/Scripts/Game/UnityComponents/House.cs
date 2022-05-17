@@ -24,9 +24,9 @@ namespace Game
         private void OnTriggerEnter(Collider collider)
         {
             if(IsLocked) return;
-            var player = collider.GetComponent<Player>();
+            var player = collider.GetComponent<Character>();
 
-            if(player != default)
+            if(player != default && player.Entity.Has<PlayerComponent>())
             {
                 if(player.Entity.Has<IgnoreTriggerComponent>()) return;
                 ref var cmd = ref Entity.Get<ChangeSceneComponent>();
@@ -36,7 +36,7 @@ namespace Game
             }
         }
 
-        private void Spawn(Player player)
+        private void Spawn(Character player)
         {
         }
 

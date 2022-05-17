@@ -2,7 +2,7 @@ namespace Game
 {
     public struct PickComponent
     {
-        public Player Player;
+        public PickBehaviour Picker;
         public Crap Target;
         public float PrePickDuration;
         public float PostPickDuration;

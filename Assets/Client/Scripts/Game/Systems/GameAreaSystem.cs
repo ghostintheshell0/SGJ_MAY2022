@@ -29,14 +29,16 @@ namespace Game
             }
         }
 
-        private GameArea GetNearArea(Player player)
+        private GameArea GetNearArea(Character player)
         {
             var minDistance = float.MaxValue;
             var id = 0;
 
             for(var i = 0; i < _sceneData.GameAreas.Length; i++)
             {
-                var d = (player.transform.position - _sceneData.GameAreas[i].transform.position).sqrMagnitude;
+                var sqrRadius = _sceneData.GameAreas[i].SafeRadius + _sceneData.GameAreas[i].WarningRadius;
+                sqrRadius *= sqrRadius;
+                var d = (player.transform.position - _sceneData.GameAreas[i].transform.position).sqrMagnitude - sqrRadius;
 
                 if(d < minDistance)
                 {

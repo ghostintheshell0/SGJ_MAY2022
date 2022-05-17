@@ -4,7 +4,7 @@ namespace Game
 {
     public struct ChangeSceneComponent
     {
-        public Player Player;
+        public Character Player;
         public string NextSceneName;
         public Transform MovePoint;
     }

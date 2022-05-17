@@ -15,27 +15,34 @@ namespace Game
             foreach(var i in _filter)
             {
                 ref var cmd = ref _filter.Get1(i);
+                var character = cmd.Npc.Character;
 
                 ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
+
                 if(player.View.CurrentCrap != default)
                 {
                     var crap = player.View.CurrentCrap;
                     player.View.CurrentCrap = default;
-                    cmd.Npc.SpeechBubble.SetActive(false);
+                    if(character.Entity.Has<SpeekerComponent>())
+                    {
+                        ref var speeker = ref character.Entity.Get<SpeekerComponent>();
+                        speeker.View.SpeechBubble.SetActive(false);
+                    }
+                    
                     _runtimeData.Progress++;
-                    cmd.Npc.AudioSource.Play();
+                    character.AudioSource.Play();
                     player.View.Entity.Get<RespawnCrapCommand>();
 
                     if(_runtimeData.Progress == 1)
                     {
                         _sceneData.House.IsLocked = false;
-                        cmd.Npc.ReadyForMove();
-                        cmd.Npc.Animator.SetBool(AniamtionNames.Carrying, true);
-                        cmd.Npc.Agent.SetDestination(_sceneData.House.HousePoint.position);
+                        character.Entity.Get<NpcComponent>().View.ReadyForMove();
+                        character.Animator.SetBool(AniamtionNames.Carrying, true);
+                        character.Agent.SetDestination(_sceneData.House.HousePoint.position);
                         crap.Collider.enabled = false;
                         crap.Obstacle.enabled = false;
-                        crap.transform.position = cmd.Npc.Hand.position;
-                        crap.transform.SetParent(cmd.Npc.Hand, true);
+                        crap.transform.position = character.HandPoint.position;
+                        crap.transform.SetParent(character.HandPoint, true);
                         crap.transform.localPosition = UnityEngine.Vector3.zero;
                         crap.Entity.Del<CrapComponent>();
                     }
@@ -53,7 +60,7 @@ namespace Game
                 
                 if(_runtimeData.Progress < _staticData.AllCrap.Count)
                 {
-                    ShowBubble(cmd.Npc);
+                    ShowBubble(character);
                     player.View.Entity.Get<UpdateProgressComponent>();
                 }
                 else
@@ -70,15 +77,18 @@ namespace Game
             }
         }
 
-        private void ShowBubble(Npc npc)
+        private void ShowBubble(Character character)
         {
+            if(!character.Entity.Has<SpeekerComponent>()) return;
+            
+            ref var speeker = ref character.Entity.Get<SpeekerComponent>();
             var currentCrap = _staticData.AllCrap[_runtimeData.Progress]; 
-            npc.SpeechBubble.SetActive(true);
-            npc.SpeechIcon.sprite = currentCrap.Icon;
-            npc.SpeechIcon.color = currentCrap.Color;
-            ref var showBubble = ref npc.Entity.Get<HideWithDelayComponent>();
-            showBubble.Target = npc.SpeechBubble;
-            showBubble.Delay = npc.ShowBubbleDuration;
+            speeker.View.SpeechBubble.SetActive(true);
+            speeker.View.SpeechIcon.sprite = currentCrap.Icon;
+            speeker.View.SpeechIcon.color = currentCrap.Color;
+            ref var showBubble = ref character.Entity.Get<HideWithDelayComponent>();
+            showBubble.Target = speeker.View.SpeechBubble;
+            showBubble.Delay = speeker.View.ShowBubbleDuration;
         }
     }
 }

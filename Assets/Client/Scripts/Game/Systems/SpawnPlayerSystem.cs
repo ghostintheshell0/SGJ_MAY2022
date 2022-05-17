@@ -25,6 +25,9 @@ namespace Game
             player.transform.rotation = spawnData.Point.rotation;
             spawnData.OnSpawn?.Invoke(player);
 
+            ref var playerComp = ref player.Entity.Get<PlayerComponent>();
+            playerComp.View = player;
+
             if(_sceneData.FollowCamera)
             {
                 _sceneData.CinemachineCamera.m_Follow = player.transform;

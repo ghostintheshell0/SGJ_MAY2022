@@ -13,18 +13,18 @@ namespace Game
             foreach(var i in _commands)
             {
                 ref var cmd = ref _commands.Get1(i);
-                ref var player = ref cmd.Picker.Entity.Get<PlayerComponent>();
+                ref var player = ref cmd.Picker.Character.Entity.Get<PlayerComponent>();
                 if(!player.View.Entity.Has<PickComponent>() || player.View.CurrentCrap != default)
                 {
-                    ref var comp = ref cmd.Picker.Entity.Get<PickComponent>();
-                    comp.Player = cmd.Picker;
+                    ref var comp = ref cmd.Picker.Character.Entity.Get<PickComponent>();
+                    comp.Picker = cmd.Picker;
                     comp.Target = cmd.Crap;
                     comp.PrePickDuration = cmd.Picker.PrePickDuration;
                     comp.PostPickDuration = cmd.Picker.PrePickDuration + cmd.Picker.PostPickDuration;
-                    cmd.Picker.Animator.SetBool(AniamtionNames.Pick, true);
-                    comp.Player.transform.forward = (cmd.Crap.transform.position - cmd.Picker.transform.position).normalized;
-                    cmd.Picker.Agent.enabled = false;
-                    comp.Player.Entity.Get<LockInputComponent>();
+                    cmd.Picker.Character.Animator.SetBool(AniamtionNames.Pick, true);
+                    comp.Picker.transform.forward = (cmd.Crap.transform.position - cmd.Picker.transform.position).normalized;
+                    cmd.Picker.Character.Agent.enabled = false;
+                    comp.Picker.Character.Entity.Get<LockInputComponent>();
                 }
                 
                 _commands.GetEntity(i).Del<PickCommand>();
@@ -39,7 +39,7 @@ namespace Game
 
                 if(!cmd.Picked  && cmd.PrePickDuration <= 0)
                 {
-                    ref var player = ref cmd.Player.Entity.Get<PlayerComponent>();
+                    ref var player = ref cmd.Picker.Character.Entity.Get<PlayerComponent>();
                     player.View.CurrentCrap = cmd.Target;
                     cmd.Target.Collider.enabled = false;
                     cmd.Target.Obstacle.enabled = false;
@@ -52,9 +52,9 @@ namespace Game
 
                 if(cmd.PostPickDuration <= 0)
                 {
-                    cmd.Player.Animator.SetBool(AniamtionNames.Pick, false);
-                    cmd.Player.Agent.enabled = true;
-                    cmd.Player.Entity.Del<LockInputComponent>();
+                    cmd.Picker.Character.Animator.SetBool(AniamtionNames.Pick, false);
+                    cmd.Picker.Character.Agent.enabled = true;
+                    cmd.Picker.Character.Entity.Del<LockInputComponent>();
                     _filter.GetEntity(i).Del<PickComponent>();
                 }
             }

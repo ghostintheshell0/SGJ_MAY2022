@@ -7,7 +7,7 @@ namespace Game
     {
         public Transform Point;
         public string Name;
-        public Action<Player> OnSpawn;
+        public Action<Character> OnSpawn;
 
     }
 }

@@ -2,7 +2,7 @@ namespace Game
 {
     public struct EnterNpcCommand
     {
-        public Npc Npc;
-        public Player Player;
+        public NpcBehaviour Npc;
+        public Character Player;
     }
 }

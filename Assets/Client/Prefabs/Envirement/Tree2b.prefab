@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2415819574580663473}
   - component: {fileID: 1596926907643845396}
   - component: {fileID: 3588695753533370334}
-  - component: {fileID: -6600334703717137086}
+  - component: {fileID: -6472467580023088110}
+  - component: {fileID: 7956159702889271839}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Tree2b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,14 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3084235351651290635}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.426008, y: -0.0000009536743, z: 2.810945}
+  m_LocalRotation: {x: -0, y: 0.6524198, z: -0, w: 0.75785774}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 81.449, z: 0}
 --- !u!33 &1596926907643845396
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3084235351651290635}
-  m_Mesh: {fileID: 2494185979427425891, guid: 6da70443f5b3ae743bedcb7a69ec1681, type: 3}
+  m_Mesh: {fileID: -5700080643567655694, guid: ceb8fc7d542610b44ac76f91f6ba8462, type: 3}
 --- !u!23 &3588695753533370334
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53,7 +53,6 @@ MeshRenderer:
   m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -84,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &-6600334703717137086
+--- !u!208 &-6472467580023088110
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +93,23 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.74, y: 7.5, z: 0.74}
+  m_Extents: {x: 0.71, y: 4.789, z: 0.71}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 4, z: 0}
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 3.86, z: 0}
   m_TimeToStationary: 0.5
+--- !u!136 &7956159702889271839
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084235351651290635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.81
+  m_Height: 11.726547
+  m_Direction: 1
+  m_Center: {x: 0.00000011920928, y: 4.4710293, z: -0.00000023841856}

@@ -15,19 +15,19 @@ namespace Game
             {
                 ref var cmd = ref _filter.Get1(i);
 
-                if(cmd.Npc.Agent.enabled) continue;
+                if(cmd.Npc.Character.Agent.enabled) continue;
 
-                if(!cmd.Npc.transform.IsNear(_sceneData.Player.transform, cmd.Npc.LookRadius))
+                if(!cmd.Npc.Character.transform.IsNear(_sceneData.Player.transform, cmd.Npc.LookRadius))
                 {
                     cmd.Delay -= Time.deltaTime;
                     if(cmd.Delay <= 0)
                     {
-                        cmd.Npc.Animator.SetBool(AniamtionNames.Dancing, true);
+                        cmd.Npc.Character.Animator.SetBool(AniamtionNames.Dancing, true);
                     }
                 }
                 else
                 {
-                    cmd.Npc.Animator.SetBool(AniamtionNames.Dancing, false);
+                    cmd.Npc.Character.Animator.SetBool(AniamtionNames.Dancing, false);
                     cmd.Delay = cmd.Npc.DelayForDancing;
                 }
                 

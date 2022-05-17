@@ -20,13 +20,15 @@ namespace Game
                 if(TryGetInteractiveObject(out var interactiveObject, out var hit))
                 {
                     var player = _sceneData.Player;
-                    if(interactiveObject.Entity.Has<CrapComponent>())
+                    if(interactiveObject.Entity.Has<CrapComponent>() && player.Entity.Has<PickerComponent>())
                     {
-                        if(player.transform.IsNear(hit.point, player.PickDistance))
+                        ref var picker = ref player.Entity.Get<PickerComponent>();
+
+                        if(picker.View.Character.transform.IsNear(hit.point, picker.View.PickDistance))
                         {
                             ref var cmd = ref player.Entity.Get<PickCommand>();
                             ref var crapComp = ref interactiveObject.Entity.Get<CrapComponent>();
-                            cmd.Picker = player;
+                            cmd.Picker = picker.View;
                             cmd.Crap = crapComp.View;
                             return;
                         }
@@ -57,7 +59,7 @@ namespace Game
             return false;
         }
 
-        private void MoveTo(Player player)
+        private void MoveTo(Character player)
         {
             if(player.Agent.enabled == false)
             {

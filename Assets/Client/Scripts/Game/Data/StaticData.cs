@@ -24,6 +24,7 @@ namespace Game
 
         public AudioManager AudioManagerPrefab;
         public UI UIPrefab;
-        public Player PlayerPrefab;
+        public Character PlayerPrefab;
+        public float RespawnDuration;
     }
 }

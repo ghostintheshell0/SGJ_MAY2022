@@ -20,10 +20,6 @@ namespace Game
             {
                 monoEntity.Init(_world);
             }
-            
-            ref var lookAt = ref _world.NewEntity().Get<LookAtComponent>();
-            lookAt.Target = _sceneData.MainCamera.transform;
-            lookAt.Transform = _sceneData.Npc.SpeechBubble.transform;
            
             
             var audioManager = Service<AudioManager>.Get();

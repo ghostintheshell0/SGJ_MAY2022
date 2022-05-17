@@ -7,12 +7,12 @@ namespace Game
     {
         public KeyCode DebugKey;
         public House House;
-        public Player Player;
+        
         public CinemachineVirtualCamera CutSceneCamera;
         public CinemachineVirtualCamera CutSceneCamera2;
         public CinemachineVirtualCamera CutSceneCamera3;
         public CinemachineVirtualCamera CutSceneCamera4;
-        public Npc Npc;
+        
         public Transform HousePoint;
         public Animator HouseAnimator;
 

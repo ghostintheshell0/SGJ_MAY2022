@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 5780988502414191290}
   - component: {fileID: 9069341461018117373}
   - component: {fileID: 7178117374467222347}
-  - component: {fileID: 7646855083601222530}
   - component: {fileID: 8233206508429038987}
   - component: {fileID: 1717457975173404499}
   - component: {fileID: 3016987833868735964}
+  - component: {fileID: 2812997563660207009}
+  - component: {fileID: 4019678238874038971}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -74,27 +75,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7646855083601222530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7195891235145243516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc7457cf1c4405cada6f16b932659a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Agent: {fileID: 7178117374467222347}
-  HandPoint: {fileID: 561784829134601465}
-  Animator: {fileID: 4460153302688618896}
-  Footsteps: {fileID: 3016987833868735964}
-  PickDistance: 1.8
-  PrePickDuration: 1.9
-  PostPickDuration: 2
-  RespawnDuration: 2.8
-  AudioSource: {fileID: 1717457975173404499}
 --- !u!54 &8233206508429038987
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -225,9 +205,40 @@ MonoBehaviour:
   gap: 0.3
   YOffset: 0.05
   StartDirection: 1
-  OffsetRotation: {x: 0, y: 0, z: 0}
-  Axis: {x: 0, y: 0, z: 0}
-  AppendOffset: 0
+--- !u!114 &2812997563660207009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195891235145243516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94442150480a9f8bd764372dbb2e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Agent: {fileID: 7178117374467222347}
+  HandPoint: {fileID: 561784829134601465}
+  Animator: {fileID: 4460153302688618896}
+  Footsteps: {fileID: 3016987833868735964}
+  AudioSource: {fileID: 1717457975173404499}
+  Behaviours:
+  - {fileID: 4019678238874038971}
+--- !u!114 &4019678238874038971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195891235145243516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617ac5dac8b6a31059ff35a1a7408f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickDistance: 1.8
+  PrePickDuration: 1.9
+  PostPickDuration: 2
 --- !u!1 &7268764928740035751
 GameObject:
   m_ObjectHideFlags: 0

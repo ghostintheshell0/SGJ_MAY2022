@@ -11,10 +11,10 @@ namespace Game
         public Camera MainCamera;
         public CinemachineBrain CinemachineBrain;
         public CinemachineVirtualCamera CinemachineCamera;
-        public Player Player {get; set;} 
+        public Character Player {get; set;} 
         public House House;
         public Transform SpawnPoint;
-        public Npc Npc;
+        public Character Npc;
         public Transform Snowing;
 
         public GameArea[] GameAreas;

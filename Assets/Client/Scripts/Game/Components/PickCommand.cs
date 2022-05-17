@@ -2,7 +2,7 @@ namespace Game
 {
     public struct PickCommand
     {
-        public Player Picker;
+        public PickBehaviour Picker;
         public Crap Crap;
     }
 }

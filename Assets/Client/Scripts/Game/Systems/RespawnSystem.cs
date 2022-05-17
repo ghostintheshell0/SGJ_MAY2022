@@ -31,7 +31,7 @@ namespace Game
                 }
                 else
                 {
-                    _ui.OutGameAreaWarning.DOFade(0, 1).SetDelay(cmd.Player.RespawnDuration);
+                    _ui.OutGameAreaWarning.DOFade(0, 1).SetDelay(_staticData.RespawnDuration);
                     var spawnPos = _sceneData.SpawnPoint.position;
                     cmd.Player.Agent.Warp(spawnPos);
                     cmd.Player.Agent.SetDestination(spawnPos);
@@ -41,7 +41,7 @@ namespace Game
 
                     SendCrapBack(player.View.CurrentCrap);
                     player.View.CurrentCrap = default;
-                    cmd.Delay = cmd.Player.RespawnDuration;
+                    cmd.Delay = _staticData.RespawnDuration;
                     cmd.Player.Entity.Get<LockInputComponent>();
                     cmd.Inited = true;
                 }
