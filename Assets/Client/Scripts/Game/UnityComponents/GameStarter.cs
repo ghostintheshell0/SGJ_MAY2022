@@ -23,37 +23,30 @@ namespace Game
 #endif
             InitServices();
 
-            if(_runtimeData.IsEnd)
-            {
-                EndGame();
-            }
-            else
-            {
-                _systems
-                    .Add(new InitSystem())
-                    .Add(new SpawnCrapSystem())
-                    .Add(new FixCrapSpawnSystem())
-                    .Add(new RaycastsSystem())
-                    .Add(new PlayerInputSystem())
-                    .Add(new PickCrapSystem())
-                    .Add(new EnterNpcSystem())
-                    .Add(new HideObjectWithDelaySystem())
-                    .Add(new LookAtSystem())
-                    .Add(new GameAreaSystem())
-                    .Add(new AgentAnimationSystem())
-                    .Add(new RespawnSystem())
-                    .Add(new ProgressionSystem())
-                    .Add(new FinalCutSceneSystem())
-                    .Add(new EasterDancingSystem())
-                    .Add(new ChangeSceneSystem())
-                    .Add(new SpawnPlayerSystem())
-                    .Add(new IgnoreTriggersSystem())
-                    .Add(new FollowSystem())
-                    .Add(new FootStepsEmmiterSystem());
-                    
-            }
-
             _systems
+                .Add(new InitSystem())
+                .Add(new SpawnCrapSystem())
+                .Add(new FixCrapSpawnSystem())
+                .Add(new RaycastsSystem())
+                .Add(new PlayerInputSystem())
+                .Add(new PickCrapSystem())
+                .Add(new EnterNpcSystem())
+                .Add(new HideObjectWithDelaySystem())
+                .Add(new LookAtSystem())
+                .Add(new GameAreaSystem())
+                .Add(new AgentAnimationSystem())
+                .Add(new RespawnSystem())
+                .Add(new ProgressionSystem())
+                .Add(new ColliderUnlockSysytem())
+                .Add(new FinalCutSceneSystem())
+                .Add(new EasterDancingSystem())
+                .Add(new ChangeSceneSystem())
+                .Add(new SpawnPlayerSystem())
+                .Add(new IgnoreTriggersSystem())
+                .Add(new FollowSystem())
+                .Add(new FootStepsEmmiterSystem())
+                .Add(new EndGameSystem())
+                    
                 .Inject(_sceneData)
                 .Inject(_staticData)
                 .Inject(_runtimeData)
@@ -90,42 +83,36 @@ namespace Game
             if(runtimeData == default)
             {
                 Service<RuntimeData>.Set(_runtimeData);
-                _runtimeData.IsNewGame = true;
             }
             else
             {
-                _runtimeData = runtimeData;
-                _sceneData.Npc.gameObject.SetActive(_sceneData.ShowNPC);
-                _sceneData.House.IsLocked = _runtimeData.Progress == 0;
+                if(_runtimeData.IsNewGame)
+                {
+                    Restart();
+                }
+                else
+                {
+                    _runtimeData = runtimeData;
+                }
+                
             }
 
             _sceneData.Player = player;
-
-            if(_runtimeData.IsNewGame)
-            {
-                audioManager.Music.volume = audioManager.defaultVolume;
-                audioManager.Wind.volume = audioManager.defaultVolume;
-                ui.EndGameScreen.alpha = 0;
-                ui.EndGameScreen.gameObject.SetActive(false);
-                _runtimeData.IsNewGame = false;
-                _runtimeData.IsEnd = false;
-                _runtimeData.Progress = 0;
-                _sceneData.House.IsLocked = true;
-            }
             
         }
 
-        private void EndGame()
+        private void Restart()
         {
-            _systems.Add(new FinalCutSceneSystem());
-            ref var end = ref _world.NewEntity().Get<FinalCutsceneComponent>();
-            _sceneData.Npc.gameObject.SetActive(false);
-            _sceneData.Snowing.gameObject.SetActive(false);
+            var audioManager = Service<AudioManager>.Get();
+            var ui = Service<UI>.Get();
 
-            if(_sceneData.Player != default)
-            {
-                _sceneData.Player.gameObject.SetActive(false);
-            }
+            audioManager.Music.volume = audioManager.defaultVolume;
+            audioManager.Wind.volume = audioManager.defaultVolume;
+            ui.EndGameScreen.alpha = 0;
+            ui.EndGameScreen.gameObject.SetActive(false);
+            _runtimeData.IsNewGame = false;
+            _runtimeData.IsEnd = false;
+            _runtimeData.Progress = 0;
         }
 
         private T InitServiceFromPrefab<T>(T prefab) where T : Component

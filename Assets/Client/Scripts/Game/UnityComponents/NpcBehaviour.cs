@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using LeopotamGroup.Globals;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,11 +9,18 @@ namespace Game
     {
         public Collider TriggerCollider;
         public NavMeshObstacle Obstacle;
+        public Transform PointForHideCrap;
+
+        public int ProgressForHide;
 
         protected override void OnInit()
         {
             ref var npc = ref Character.Entity.Get<NpcComponent>();
             npc.View = this;
+
+            var data = Service<RuntimeData>.Get();
+            var isHide = ProgressForHide > data.Progress;
+            gameObject.SetActive(isHide);
         }
 
         private void OnTriggerEnter(Collider other)

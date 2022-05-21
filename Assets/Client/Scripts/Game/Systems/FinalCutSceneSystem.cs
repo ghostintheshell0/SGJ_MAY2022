@@ -9,6 +9,7 @@ namespace Game
     public class FinalCutSceneSystem : IEcsRunSystem
     {
         private readonly EcsFilter<FinalCutsceneComponent> _filter = default;
+        private readonly EcsFilter<NpcComponent> _npcs = default;
         private readonly EcsWorld _world = default;
         private readonly SceneData _sceneData = default;
         private readonly UI _ui = default;
@@ -30,6 +31,12 @@ namespace Game
 
                 if(cmd.ZeroStep == false)
                 {
+                    foreach(var k in _npcs)
+                    {
+                        ref var npc = ref _npcs.Get1(k);
+                        npc.View.gameObject.SetActive(false);
+                    }
+                    
                     cmd.ZeroStep = true;
                     cmd.Delay = cutsceneData.ZeroPartDuration;
                     cutsceneData.CutSceneCamera3.enabled = true;

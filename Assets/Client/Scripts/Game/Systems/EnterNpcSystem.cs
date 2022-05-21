@@ -35,10 +35,9 @@ namespace Game
 
                     if(_runtimeData.Progress == 1)
                     {
-                        _sceneData.House.IsLocked = false;
                         character.Entity.Get<NpcComponent>().View.ReadyForMove();
                         character.Animator.SetBool(AniamtionNames.Carrying, true);
-                        character.Agent.SetDestination(_sceneData.House.HousePoint.position);
+                        character.Agent.SetDestination(cmd.Npc.PointForHideCrap.position);
                         crap.Collider.enabled = false;
                         crap.Obstacle.enabled = false;
                         crap.transform.position = character.HandPoint.position;

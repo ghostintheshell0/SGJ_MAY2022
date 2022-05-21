@@ -6,14 +6,12 @@ namespace Game
     public class FinalCutScene : MonoEntity
     {
         public KeyCode DebugKey;
-        public House House;
         
         public CinemachineVirtualCamera CutSceneCamera;
         public CinemachineVirtualCamera CutSceneCamera2;
         public CinemachineVirtualCamera CutSceneCamera3;
         public CinemachineVirtualCamera CutSceneCamera4;
         
-        public Transform HousePoint;
         public Animator HouseAnimator;
 
         public float SunRotationDuration;

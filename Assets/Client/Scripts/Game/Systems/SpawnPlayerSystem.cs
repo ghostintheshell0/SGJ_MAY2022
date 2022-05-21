@@ -18,6 +18,7 @@ namespace Game
             if(!_sceneData.Player.Entity.IsAlive())
             {
                 _sceneData.Player.Init(_world);
+                _sceneData.Player.Footsteps.system.Clear();
             }
             ref var ignoreTrigger = ref player.Entity.Get<IgnoreTriggerComponent>();
             ignoreTrigger.LifeTime = _staticData.IgnoreTriggersAfterSpawnTime;

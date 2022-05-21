@@ -132,8 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 35969343}
-  - component: {fileID: 35969342}
   - component: {fileID: 35969341}
+  - component: {fileID: 35969344}
+  - component: {fileID: 35969342}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -163,14 +164,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 35969340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78003ba42e0477de5ac1e7ee1c662d13, type: 3}
+  m_Script: {fileID: 11500000, guid: ba2cc0cfec2e116be936c615053982c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorObstcale: {fileID: 0}
-  HousePoint: {fileID: 742024676}
-  ExitPoint: {fileID: 481031834}
+  EnterPoint: {fileID: 1982209181}
+  ExitPoint: {fileID: 742024676}
   SceneName: SampleScene
-  isLocked: 0
+  SpawnEnabled: 1
 --- !u!4 &35969343
 Transform:
   m_ObjectHideFlags: 0
@@ -187,6 +187,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35969344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35969340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d1eeafc460ff82a8f36707ab7e27d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Progress: 1
+  Colliders:
+  - {fileID: 35969341}
 --- !u!1 &60167197
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,23 +236,22 @@ MonoBehaviour:
   MainCamera: {fileID: 711656253}
   CinemachineBrain: {fileID: 711656250}
   CinemachineCamera: {fileID: 669199094}
-  House: {fileID: 35969342}
   SpawnPoint: {fileID: 481031834}
   Npc: {fileID: 1309255952}
   Snowing: {fileID: 0}
   GameAreas:
   - {fileID: 1239284292}
   Entities:
-  - {fileID: 1309255952}
   - {fileID: 35969342}
+  - {fileID: 35969344}
   - {fileID: 1034619175}
   - {fileID: 1239284292}
+  - {fileID: 1309255952}
   RespawnClip: {fileID: 8300000, guid: 9920b036b85138e19b7a00c1e6a7bbd2, type: 3}
   FinalCutScene: {fileID: 0}
   FollowCamera: 0
   EnableFootsteps: 0
   EnableWind: 0
-  ShowNPC: 1
 --- !u!114 &60167199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +707,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.4265403, y: 1}
+    m_SensorSize: {x: 2.2065637, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -878,7 +892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742024676}
   m_Layer: 0
-  m_Name: HousePoint (1)
+  m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1066,11 +1080,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b7767a193fdd6259b660bdda9600d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  House: {fileID: 35969342}
+  IsLocked: 0
+  IsOpened: 0
   Animator: {fileID: 0}
   Source: {fileID: 0}
   Open: {fileID: 8300000, guid: efe63ecd8e3bc1553bda69bdfeb1f780, type: 3}
   Close: {fileID: 8300000, guid: 2bd9ac15a30677238a05584a97f51c9d, type: 3}
+  Objects: []
 --- !u!1 &1239284291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1982209181}
   m_Layer: 0
-  m_Name: HousePoint
+  m_Name: EnterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

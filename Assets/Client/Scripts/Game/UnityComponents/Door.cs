@@ -4,37 +4,42 @@ namespace Game
 {
     public class Door : MonoEntity
     {
-        public House House;
+        public bool IsLocked;
+        public bool IsOpened;
         public Animator Animator;
         public AudioSource Source;
         public AudioClip Open;
         public AudioClip Close;
+        public GameObject[] Objects;
 
         private void OnTriggerEnter(Collider c)
         {
-            if(House.IsLocked) return;
+            if(IsLocked || IsOpened) return;
 
-            var isOpened = Animator.GetBool(AniamtionNames.Open);
-            if(!isOpened)
+            Animator.SetBool(AniamtionNames.Open, true);
+            Source.clip = Open;
+            Source.Play();
+            IsOpened = true;
+
+            for(var i = 0; i < Objects.Length; i++)
             {
-                Animator.SetBool(AniamtionNames.Open, true);
-                Source.clip = Open;
-                Source.Play();
+                Objects[i].SetActive(false);
             }
         }
 
         private void OnTriggerExit(Collider c)
         {
-            if(House.IsLocked) return;
+            if(IsLocked || !IsOpened) return;
 
-            var isOpened = Animator.GetBool(AniamtionNames.Open);
-            if(isOpened)
+            Animator.SetBool(AniamtionNames.Open, false);
+            Source.clip = Close;
+            Source.Play();
+            IsOpened = false;
+
+            for(var i = 0; i < Objects.Length; i++)
             {
-                Animator.SetBool(AniamtionNames.Open, false);
-                Source.clip = Close;
-                Source.Play();
+                Objects[i].SetActive(true);
             }
-            
         }
     }
 }

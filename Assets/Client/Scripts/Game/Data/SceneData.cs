@@ -12,9 +12,9 @@ namespace Game
         public CinemachineBrain CinemachineBrain;
         public CinemachineVirtualCamera CinemachineCamera;
         public Character Player {get; set;} 
-        public House House;
+        
         public Transform SpawnPoint;
-        public Character Npc;
+        
         public Transform Snowing;
 
         public GameArea[] GameAreas;
@@ -25,7 +25,6 @@ namespace Game
         public bool FollowCamera;
         public bool EnableFootsteps;
         public bool EnableWind;
-        public bool ShowNPC;
     
         [Button]
         public void Grab()

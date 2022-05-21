@@ -43,6 +43,7 @@ namespace Game
                 follow.Follower = _sceneData.Snowing.transform;
                 follow.Target = _sceneData.Player.transform;
             }
+            _world.NewEntity().Get<UpdateProgressEvent>();
 
             var windVolume = _sceneData.EnableWind ? 1 : 0;
 

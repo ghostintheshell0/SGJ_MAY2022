@@ -398,6 +398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerCollider: {fileID: 4936575408134962829}
   Obstacle: {fileID: 4936575408134962828}
+  PointForHideCrap: {fileID: 0}
+  ProgressForHide: 99999
 --- !u!1 &5380940091936729694
 GameObject:
   m_ObjectHideFlags: 0
