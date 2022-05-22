@@ -1965,6 +1965,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1282619731691484900, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282619731691484900, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282619731691484900, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.16
+      objectReference: {fileID: 0}
     - target: {fileID: 2400147914974423360, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2017,6 +2029,18 @@ PrefabInstance:
       propertyPath: Sun
       value: 
       objectReference: {fileID: 705507995}
+    - target: {fileID: 4263649617559307842, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453437872349962988, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453437872349962988, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4afc15ad6f8ee1ca0916155981dfcba8, type: 3}
 --- !u!1 &1550381339
@@ -2454,7 +2478,6 @@ MonoBehaviour:
   CinemachineBrain: {fileID: 963194230}
   CinemachineCamera: {fileID: 2075079093}
   SpawnPoint: {fileID: 184620521}
-  Npc: {fileID: 975628791}
   Snowing: {fileID: 5155658665874483942}
   GameAreas:
   - {fileID: 6771706335311454463}
@@ -2479,7 +2502,6 @@ MonoBehaviour:
   FollowCamera: 1
   EnableFootsteps: 1
   EnableWind: 1
-  ShowNPC: 0
 --- !u!4 &1785134034
 Transform:
   m_ObjectHideFlags: 0
@@ -2636,7 +2658,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2065637, y: 1}
+    m_SensorSize: {x: 0.69359756, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

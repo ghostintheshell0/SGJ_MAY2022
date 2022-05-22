@@ -35,5 +35,18 @@ namespace Game
             animatedAgent.Agent = Agent;
             animatedAgent.Animator = Animator;
         }
+
+        public T GetBehaviour<T>() where T : CharacterBehaviour
+        {
+            foreach(var behaviour in Behaviours)
+            {
+                if(behaviour.GetType() == typeof(T))
+                {
+                    return behaviour as T;
+                }
+            }
+
+            return default;
+        }
     }
 }
