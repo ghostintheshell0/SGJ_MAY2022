@@ -8,10 +8,11 @@ namespace Game
     {
         public NavMeshAgent Agent;
         public Transform HandPoint;
+        public Rigidbody Body;
         public Animator Animator;
         public FootStepsEmmiter Footsteps;
         public AudioSource AudioSource;
-
+//inventory
         public Crap CurrentCrap {get; set;}
 
         public CharacterBehaviour[] Behaviours;

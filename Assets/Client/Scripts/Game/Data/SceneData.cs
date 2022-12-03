@@ -10,6 +10,7 @@ namespace Game
         public KeyCode RespawnCrapButton;
         public Camera MainCamera;
         public CinemachineBrain CinemachineBrain;
+        public CameraFollow CameraFollow;
         public CinemachineVirtualCamera CinemachineCamera;
         public Character Player {get; set;} 
         

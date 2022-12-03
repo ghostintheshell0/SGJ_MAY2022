@@ -5,7 +5,7 @@ namespace Game
 {
     public class ColliderUnlocker : MonoEntity
     {
-        public int Progress;
+        public ProgressRequirement Progress;
         public Collider[] Colliders;
 
         protected override void OnInit()

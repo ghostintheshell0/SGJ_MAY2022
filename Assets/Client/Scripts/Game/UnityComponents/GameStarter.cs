@@ -25,6 +25,7 @@ namespace Game
 
             _systems
                 .Add(new InitSystem())
+                .Add(new SpawnPlayerSystem())
                 .Add(new SpawnCrapSystem())
                 .Add(new FixCrapSpawnSystem())
                 .Add(new RaycastsSystem())
@@ -38,14 +39,14 @@ namespace Game
                 .Add(new RespawnSystem())
                 .Add(new ProgressionSystem())
                 .Add(new ColliderUnlockSysytem())
-                .Add(new FinalCutSceneSystem())
+                .Add(new CutSceneSystem())
                 .Add(new EasterDancingSystem())
                 .Add(new ChangeSceneSystem())
-                .Add(new SpawnPlayerSystem())
                 .Add(new IgnoreTriggersSystem())
                 .Add(new FollowSystem())
                 .Add(new FootStepsEmmiterSystem())
                 .Add(new EndGameSystem())
+                .Add(new SkipCutSceneSystem())
                     
                 .Inject(_sceneData)
                 .Inject(_staticData)
@@ -77,7 +78,7 @@ namespace Game
 
             var audioManager = InitServiceFromPrefab<AudioManager>(_staticData.AudioManagerPrefab);
             var ui = InitServiceFromPrefab<UI>(_staticData.UIPrefab);
-            var player = InitServiceFromPrefab<Character>(_staticData.PlayerPrefab);
+        //    var player = InitServiceFromPrefab<Character>(_staticData.PlayerPrefab);
             
             var runtimeData = Service<RuntimeData>.Get();
             if(runtimeData == default)
@@ -97,10 +98,11 @@ namespace Game
                 
             }
 
-            _sceneData.Player = player;
+          //  _sceneData.Player = player;
             
         }
 
+    //TODO переписать
         private void Restart()
         {
             var audioManager = Service<AudioManager>.Get();
@@ -112,7 +114,7 @@ namespace Game
             ui.EndGameScreen.gameObject.SetActive(false);
             _runtimeData.IsNewGame = false;
             _runtimeData.IsEnd = false;
-            _runtimeData.Progress = 0;
+            _runtimeData.DeliveredItems.Clear();
         }
 
         private T InitServiceFromPrefab<T>(T prefab) where T : Component

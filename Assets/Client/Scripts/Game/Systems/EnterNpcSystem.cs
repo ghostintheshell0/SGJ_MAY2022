@@ -22,6 +22,7 @@ namespace Game
                 if(player.View.CurrentCrap != default)
                 {
                     var crap = player.View.CurrentCrap;
+                    _runtimeData.DeliveredItems.Add(player.View.CurrentCrap.Data.name);
                     player.View.CurrentCrap = default;
                     if(character.Entity.Has<SpeekerComponent>())
                     {
@@ -29,11 +30,11 @@ namespace Game
                         speeker.View.SpeechBubble.SetActive(false);
                     }
                     
-                    _runtimeData.Progress++;
+
                     character.AudioSource.Play();
                     player.View.Entity.Get<RespawnCrapCommand>();
 
-                    if(_runtimeData.Progress == 1)
+                    if(_runtimeData.DeliveredItems.Count == 1)
                     {
                         character.Entity.Get<NpcComponent>().View.ReadyForMove();
                         character.Animator.SetBool(AniamtionNames.Carrying, true);
@@ -57,7 +58,7 @@ namespace Game
                    
                 }
                 
-                if(_runtimeData.Progress < _staticData.AllCrap.Count)
+                if(_runtimeData.DeliveredItems.Count < _staticData.AllCrap.Count)
                 {
                     ShowBubble(character);
                     player.View.Entity.Get<UpdateProgressComponent>();
@@ -81,7 +82,7 @@ namespace Game
             if(!character.Entity.Has<SpeekerComponent>()) return;
             
             ref var speeker = ref character.Entity.Get<SpeekerComponent>();
-            var currentCrap = _staticData.AllCrap[_runtimeData.Progress]; 
+            var currentCrap = _staticData.AllCrap[_runtimeData.DeliveredItems.Count]; 
             speeker.View.SpeechBubble.SetActive(true);
             speeker.View.SpeechIcon.sprite = currentCrap.Icon;
             speeker.View.SpeechIcon.color = currentCrap.Color;

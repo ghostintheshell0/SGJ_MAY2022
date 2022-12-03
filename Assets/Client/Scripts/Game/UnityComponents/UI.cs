@@ -18,6 +18,8 @@ namespace Game
         public TMP_Text Developers;
         public Button RestartButton;
 
+        public Image SkipCutsceneProgress;
+
         public string[] DevelopersVariations;
         public float ChangeSceneFadeDuration;
 

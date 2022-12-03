@@ -1,11 +1,13 @@
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Playables;
 
 namespace Game
 {
     public class FinalCutScene : MonoEntity
     {
         public KeyCode DebugKey;
+        public PlayableDirector Timeline;
         
         public CinemachineVirtualCamera CutSceneCamera;
         public CinemachineVirtualCamera CutSceneCamera2;

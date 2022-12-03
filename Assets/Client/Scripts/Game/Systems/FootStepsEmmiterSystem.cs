@@ -27,6 +27,8 @@ namespace Game
             foreach(var i in _filter)
             {
                 ref var cmd = ref _filter.Get1(i);
+                
+                if(cmd.View.Agent.enabled == false) continue;
 
                 if (!cmd.View.transform.IsNear(cmd.LastEmitPosition, cmd.View.delta))
                 {

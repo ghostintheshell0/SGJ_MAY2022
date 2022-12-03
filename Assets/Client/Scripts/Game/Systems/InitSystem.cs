@@ -37,12 +37,6 @@ namespace Game
             _ui.ChangeSceneFade.SetAlpha(1);
             _ui.ChangeSceneFade.DOFade(0f, _ui.ChangeSceneFadeDuration);
 
-            if(_sceneData.Snowing != default)
-            {
-                ref var follow = ref _world.NewEntity().Get<FollowComponent>();
-                follow.Follower = _sceneData.Snowing.transform;
-                follow.Target = _sceneData.Player.transform;
-            }
             _world.NewEntity().Get<UpdateProgressEvent>();
 
             var windVolume = _sceneData.EnableWind ? 1 : 0;

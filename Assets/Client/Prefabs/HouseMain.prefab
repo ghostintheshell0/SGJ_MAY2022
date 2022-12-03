@@ -1313,7 +1313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d1eeafc460ff82a8f36707ab7e27d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Progress: 1
+  Progress:
+    DeliveredItems: []
+    DeliveredItemsCount: 1
   Colliders:
   - {fileID: 8367238845304054942}
   - {fileID: 5492333186956851309}

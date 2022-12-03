@@ -26,5 +26,7 @@ namespace Game
         public UI UIPrefab;
         public Character PlayerPrefab;
         public float RespawnDuration;
+
+        public float SkipCutsceneDuration;
     }
 }

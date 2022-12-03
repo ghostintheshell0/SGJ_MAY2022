@@ -20,7 +20,9 @@ namespace Game
             {
                 ref var cmd = ref _filter.Get1(i);
                 var index = _staticData.AllCrap.IndexOf(cmd.View.Crap);
-                if(index < _runtimeData.Progress) continue;
+                
+                if(_runtimeData.DeliveredItems.Contains(cmd.View.Crap.name)) continue;
+                if(_runtimeData.PickedItem == cmd.View.Crap.name) continue;
 
                 if(_sceneData.Player.CurrentCrap != default && _sceneData.Player.CurrentCrap.Data.name == cmd.View.Crap.name) continue;
                 var prefab = cmd.View.Crap.Prefab;

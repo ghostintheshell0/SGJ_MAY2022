@@ -114,17 +114,26 @@ namespace Game
                 return;
             }
 
+            RaycastHit nearestHit = default;
+            var nearestDistance = float.MaxValue;
+
             foreach(var i in _raycasts)
             {
                 ref var hit = ref _raycasts.Get1(i).Hit;
 
                 if(_staticData.GroundLayers.Contains(hit.collider.gameObject.layer))
                 {
-                    var worldPos = hit.point;
-                    player.Agent.SetDestination(worldPos);
-                    return;
+                    var distance = (_sceneData.MainCamera.transform.position - hit.point).sqrMagnitude;
+                    if(distance < nearestDistance)
+                    {
+                        nearestDistance = distance;
+                        nearestHit = hit;
+                    }
                 }
             }
+
+            var worldPos = nearestHit.point;
+            player.Agent.SetDestination(worldPos);
 
         }
     }

@@ -15,7 +15,7 @@ namespace Game
                 foreach(var i in _filter)
                 {
                     ref var cmd = ref _filter.Get1(i);
-                    var isEnabled = cmd.View.Progress <= _runtimeData.Progress;
+                    var isEnabled = cmd.View.Progress.IsCompleted();
 
                     foreach(var collider in cmd.View.Colliders)
                     {
